@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Day 3 - 10th Dhul-Hijjah (Eid al-Adha) | Hajj Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #b45f1b, #e67e22);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 750px;
+            width: 100%;
+        }
+        .card {
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        .header {
+            background: linear-gradient(135deg, #f4a261, #e76f51);
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .header .day-arabic {
+            font-family: 'Scheherazade', 'Amiri', 'Traditional Arabic', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #ffecb3;
+            margin-top: 8px;
+        }
+        .header .date {
+            font-size: 16px;
+            color: #fef0d9;
+            margin-top: 8px;
+        }
+        .content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        /* Language Block Styles */
+        .lang-block {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .lang-header {
+            padding: 14px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        /* Urdu Block (Top) */
+        .urdu-block {
+            background: #fff8e7;
+        }
+        .urdu-block .lang-header {
+            background: #8a6e2c;
+            color: white;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 22px;
+            direction: rtl;
+        }
+        .urdu-content {
+            padding: 20px;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #5a3e1b;
+            line-height: 1.7;
+            text-align: right;
+        }
+        /* English Block (Bottom) */
+        .english-block {
+            background: #e8f0fe;
+        }
+        .english-block .lang-header {
+            background: #2c7da0;
+            color: white;
+            text-align: left;
+            font-size: 20px;
+        }
+        .english-content {
+            padding: 20px;
+            font-size: 20px;
+            color: #1a3a4a;
+            line-height: 1.5;
+        }
+        /* Common content styling */
+        .english-content p, .urdu-content p {
+            margin-bottom: 16px;
+        }
+        .english-content p:last-child, .urdu-content p:last-child {
+            margin-bottom: 0;
+        }
+        .step-list {
+            margin: 8px 0 8px 20px;
+            padding-left: 10px;
+        }
+        .step-list li {
+            margin-bottom: 8px;
+        }
+        .urdu-content .step-list {
+            margin-right: 20px;
+            margin-left: 0;
+            padding-right: 10px;
+            list-style-position: inside;
+        }
+        .note-text {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px dashed #d4a373;
+            font-weight: 500;
+        }
+        .success-text {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px dashed #2e7d32;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            padding: 0 24px 24px 24px;
+            gap: 12px;
+        }
+        .btn {
+            background: #e67e22;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #b45f1b;
+            transform: scale(1.02);
+        }
+        .btn-prev {
+            background: #2c7da0;
+        }
+        .btn-prev:hover {
+            background: #1f5e7a;
+        }
+        .btn-next {
+            background: #e6a017;
+        }
+        .btn-next:hover {
+            background: #c98a0c;
+        }
+        /* Small screens adjustment */
+        @media (max-width: 550px) {
+            .english-content {
+                font-size: 17px;
+            }
+            .urdu-content {
+                font-size: 20px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="header">
+            <h1>🐐 DAY 3 - 10th DHUL-HIJJAH (EID AL-ADHA)</h1>
+            <div class="day-arabic">يَوْمُ النَّحْرِ - عِيدُ الْأَضْحَى</div>
+            <div class="date">تیسرا دن - قربانی کا دن</div>
+        </div>
+
+        <div class="content">
+            <!-- URDU BLOCK (TOP) -->
+            <div class="lang-block urdu-block">
+                <div class="lang-header">🇵🇰 اُرْدُو</div>
+                <div class="urdu-content">
+                    <p><strong>🐐 ۱۰ ذوالحجہ - یوم النحر (عید الاضحیٰ)</strong></p>
+                    <p>اس دن تین اہم اعمال ترتیب کے ساتھ کریں:</p>
+                    <ol class="step-list" start="1">
+                        <li><strong>رمی:</strong> بڑے شیطان (جمرہ عقبہ) پر ۷ کنکریاں ماریں۔</li>
+                        <li><strong>قربانی:</strong> اپنے گروپ سے تصدیق کریں (قربانی کے پیسے پہلے ادا ہو چکے ہیں)، قربانی ہونے کی تصدیق کے بعد اگلا قدم کریں۔</li>
+                        <li><strong>حلق / تقصیر:</strong> سر منڈوائیں یا بال کٹوائیں (مرد: منڈوائیں یا کٹوائیں؛ خواتین: بال کٹوائیں)۔</li>
+                    </ol>
+                    <p><strong>احرام کھولنا:</strong> حلق/تقصیر کے بعد احرام کھول سکتے ہیں۔ تمام پابندیاں ختم ہو جاتی ہیں (سوائے میاں بیوی کے تعلق کے)۔ اب خوشبو لگا سکتے ہیں، سلے ہوئے کپڑے پہن سکتے ہیں۔</p>
+                    <p><strong>طواف زیارت:</strong> یہ حَج کا دوسرا اہم فریضہ ہے۔ بہتر یہ ہے کہ ۱۰ ذوالحجہ کو ہی کریں، لیکن بھیڑ سے بچنے کے لیے ۱۰، ۱۱، یا ۱۲ ذوالحجہ کو غروب آفتاب سے پہلے کسی بھی وقت کر سکتے ہیں۔</p>
+                    <p class="success-text">✅ طواف زیارت کے بعد → تمام پابندیاں ختم ہو جاتی ہیں (میاں بیوی کا تعلق بھی حلال ہو جاتا ہے)</p>
+                </div>
+            </div>
+
+            <!-- ENGLISH BLOCK (BOTTOM) -->
+            <div class="lang-block english-block">
+                <div class="lang-header">🇬🇧 ENGLISH</div>
+                <div class="english-content">
+                    <p><strong>🐐 10th Dhul-Hijjah - Day of Sacrifice (Eid al-Adha)</strong></p>
+                    <p>Three important actions to be done on this day, IN ORDER:</p>
+                    <ol class="step-list" start="1">
+                        <li><strong>Rami:</strong> Throw 7 pebbles at the big devil (Al-Jamrah al-Kubra / Jamrat al-Aqaba).</li>
+                        <li><strong>Sacrifice:</strong> Confirm with your group (money already paid). Once sacrifice is confirmed, proceed to the next step.</li>
+                        <li><strong>Shave / Cut hair:</strong> Shave head or cut hair short (men: shave or cut short; women: cut short only).</li>
+                    </ol>
+                    <p><strong>Remove Ihram:</strong> After shaving/cutting hair, you can take off Ihram. All restrictions are lifted (except marital relations). You can now use perfume and wear sewn clothes.</p>
+                    <p><strong>Tawaf al-Ziyarat:</strong> This is the second important obligation of Hajj. It is preferable to perform it on the 10th, but to avoid rush, you can perform it anytime on the 10th, 11th, or before sunset on the 12th of Dhul-Hijjah.</p>
+                    <p class="success-text">✅ After Tawaf al-Ziyarat → ALL restrictions end (including marital relations become permissible)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="day2.html" class="btn btn-prev">⬅️ DAY 2 → Arafah</a>
+            <a href="day4.html" class="btn btn-next">➡️ DAY 4 → First Rami</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

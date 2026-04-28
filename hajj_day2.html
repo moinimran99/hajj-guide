@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Day 2 - 9th Dhul-Hijjah (Arafah) | Hajj Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #641e2a, #a6343c);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 750px;
+            width: 100%;
+        }
+        .card {
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        .header {
+            background: linear-gradient(135deg, #e63946, #d62828);
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .header .day-arabic {
+            font-family: 'Scheherazade', 'Amiri', 'Traditional Arabic', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #ffecb3;
+            margin-top: 8px;
+        }
+        .header .date {
+            font-size: 16px;
+            color: #ffcdd2;
+            margin-top: 8px;
+        }
+        .content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        /* Language Block Styles */
+        .lang-block {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .lang-header {
+            padding: 14px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        /* Urdu Block (Top) */
+        .urdu-block {
+            background: #fff8e7;
+        }
+        .urdu-block .lang-header {
+            background: #8a6e2c;
+            color: white;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 22px;
+            direction: rtl;
+        }
+        .urdu-content {
+            padding: 20px;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #5a3e1b;
+            line-height: 1.7;
+            text-align: right;
+        }
+        /* English Block (Bottom) */
+        .english-block {
+            background: #e8f0fe;
+        }
+        .english-block .lang-header {
+            background: #2c7da0;
+            color: white;
+            text-align: left;
+            font-size: 20px;
+        }
+        .english-content {
+            padding: 20px;
+            font-size: 20px;
+            color: #1a3a4a;
+            line-height: 1.5;
+        }
+        /* Common content styling */
+        .english-content p, .urdu-content p {
+            margin-bottom: 16px;
+        }
+        .english-content p:last-child, .urdu-content p:last-child {
+            margin-bottom: 0;
+        }
+        .warning-text {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px dashed #e63946;
+            font-weight: bold;
+            color: #c62828;
+        }
+        .note-text {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px dashed #d4a373;
+            font-weight: 500;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            padding: 0 24px 24px 24px;
+            gap: 12px;
+        }
+        .btn {
+            background: #e63946;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #b71c1c;
+            transform: scale(1.02);
+        }
+        .btn-prev {
+            background: #2c7da0;
+        }
+        .btn-prev:hover {
+            background: #1f5e7a;
+        }
+        .btn-next {
+            background: #e6a017;
+        }
+        .btn-next:hover {
+            background: #c98a0c;
+        }
+        /* Small screens adjustment */
+        @media (max-width: 550px) {
+            .english-content {
+                font-size: 17px;
+            }
+            .urdu-content {
+                font-size: 20px;
+            }
+            .header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="header">
+            <h1>🔥 DAY 2 - 9th DHUL-HIJJAH (ARAFAH)</h1>
+            <div class="day-arabic">يَوْمُ عَرَفَةَ - ٩ ذُو الْحِجَّةِ</div>
+            <div class="date">دوسرا دن - عرفہ کا دن</div>
+        </div>
+
+        <div class="content">
+            <!-- URDU BLOCK (TOP) -->
+            <div class="lang-block urdu-block">
+                <div class="lang-header">🇵🇰 اُرْدُو</div>
+                <div class="urdu-content">
+                    <p><strong>🔥 عرفہ کا دن - حَج کا عظیم ترین رُکْن</strong></p>
+                    <p>حاجی پورا دن عرفات میں گزارتا ہے، دعا اور عبادت کرتا ہے۔ یہ حَج کا سب سے اہم دن ہے۔</p>
+                    <p>غروب آفتاب کے یقین ہونے پر، حاجی عرفات سے مزدلفہ کی طرف روانہ ہوتا ہے۔</p>
+                    <p>مزدلفہ پہنچ کر، مغرب اور عشاء کی نماز اکٹھی پڑھی جائے گی (عشاء کے وقت)۔</p>
+                    <p>پوری رات مزدلفہ میں گزاری جائے گی۔ رات کے وقت کنکریاں جمع کریں جو اگلے دن استعمال ہوں گی۔</p>
+                    <p>فجر کی نماز بھی مزدلفہ میں ادا کی جائے گی۔</p>
+                    <p class="warning-text">⚠️ حَج عَرَفہ ہے - عرفہ کے بغیر حَج نہیں ⚠️</p>
+                </div>
+            </div>
+
+            <!-- ENGLISH BLOCK (BOTTOM) -->
+            <div class="lang-block english-block">
+                <div class="lang-header">🇬🇧 ENGLISH</div>
+                <div class="english-content">
+                    <p><strong>🔥 Day of Arafah - The Greatest Pillar of Hajj</strong></p>
+                    <p>The pilgrim spends the ENTIRE day in Arafat, engaged in prayer and supplication. This is the most important day of Hajj.</p>
+                    <p>When sunset is certain, the pilgrims leave Arafat and head towards Muzdalifah.</p>
+                    <p>Upon reaching Muzdalifah, Maghrib and Isha prayers are offered together at the time of Isha.</p>
+                    <p>The whole night is spent in Muzdalifah. During the night, pilgrims collect pebbles that will be used the next day.</p>
+                    <p>Fajr prayer is also offered in Muzdalifah.</p>
+                    <p class="warning-text">⚠️ HAJJ IS ARAFAH - Without Arafah, NO HAJJ ⚠️</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="day1.html" class="btn btn-prev">⬅️ DAY 1 → Mina</a>
+            <a href="day3.html" class="btn btn-next">➡️ DAY 3 → Eid</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

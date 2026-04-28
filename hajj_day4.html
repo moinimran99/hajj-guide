@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Day 4 - 11th Dhul-Hijjah (First Rami) | Hajj Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #2d6a4f, #40916c);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 750px;
+            width: 100%;
+        }
+        .card {
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        .header {
+            background: linear-gradient(135deg, #40916c, #52b788);
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .header .day-arabic {
+            font-family: 'Scheherazade', 'Amiri', 'Traditional Arabic', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #ffecb3;
+            margin-top: 8px;
+        }
+        .header .date {
+            font-size: 16px;
+            color: #d8f3dc;
+            margin-top: 8px;
+        }
+        .content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        /* Language Block Styles */
+        .lang-block {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .lang-header {
+            padding: 14px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        /* Urdu Block (Top) */
+        .urdu-block {
+            background: #fff8e7;
+        }
+        .urdu-block .lang-header {
+            background: #8a6e2c;
+            color: white;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 22px;
+            direction: rtl;
+        }
+        .urdu-content {
+            padding: 20px;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #5a3e1b;
+            line-height: 1.7;
+            text-align: right;
+        }
+        /* English Block (Bottom) */
+        .english-block {
+            background: #e8f0fe;
+        }
+        .english-block .lang-header {
+            background: #2c7da0;
+            color: white;
+            text-align: left;
+            font-size: 20px;
+        }
+        .english-content {
+            padding: 20px;
+            font-size: 20px;
+            color: #1a3a4a;
+            line-height: 1.5;
+        }
+        /* Common content styling */
+        .english-content p, .urdu-content p {
+            margin-bottom: 16px;
+        }
+        .english-content p:last-child, .urdu-content p:last-child {
+            margin-bottom: 0;
+        }
+        .step-list {
+            margin: 8px 0 8px 20px;
+            padding-left: 10px;
+        }
+        .step-list li {
+            margin-bottom: 8px;
+        }
+        .urdu-content .step-list {
+            margin-right: 20px;
+            margin-left: 0;
+            padding-right: 10px;
+            list-style-position: inside;
+        }
+        .jamarat-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0;
+            justify-content: center;
+        }
+        .jamrat-item {
+            background: #d4a373;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .urdu-content .jamrat-item {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 16px;
+            background: #b97d44;
+        }
+        .note-text {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px dashed #d4a373;
+            font-weight: 500;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            padding: 0 24px 24px 24px;
+            gap: 12px;
+        }
+        .btn {
+            background: #40916c;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #2d6a4f;
+            transform: scale(1.02);
+        }
+        .btn-prev {
+            background: #2c7da0;
+        }
+        .btn-prev:hover {
+            background: #1f5e7a;
+        }
+        .btn-next {
+            background: #e6a017;
+        }
+        .btn-next:hover {
+            background: #c98a0c;
+        }
+        /* Small screens adjustment */
+        @media (max-width: 550px) {
+            .english-content {
+                font-size: 17px;
+            }
+            .urdu-content {
+                font-size: 20px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="header">
+            <h1>🪨 DAY 4 - 11th DHUL-HIJJAH (FIRST RAMI)</h1>
+            <div class="day-arabic">الرَّمْيُ الْأَوَّلُ - ١١ ذُو الْحِجَّةِ</div>
+            <div class="date">چوتھا دن - پہلی رمی</div>
+        </div>
+
+        <div class="content">
+            <!-- URDU BLOCK (TOP) -->
+            <div class="lang-block urdu-block">
+                <div class="lang-header">🇵🇰 اُرْدُو</div>
+                <div class="urdu-content">
+                    <p><strong>🪨 ۱۱ ذوالحجہ - پہلی رمی</strong></p>
+                    <p>۱۰ ذوالحجہ کے بعد آنے والی رات (۱۱ ویں رات) اور ۱۲ ویں رات کو مِنٰی میں گزارنا سُنَّت ہے۔</p>
+                    <p><strong>رمی کا وقت:</strong> ۱۱ اور ۱۲ ذوالحجہ کو رمی کا وقت ظہر کے بعد شروع ہوتا ہے۔</p>
+                    <p><strong>تینوں جمرات پر رمی کریں:</strong></p>
+                    <div class="jamarat-list">
+                        <span class="jamrat-item">الجمرة الصغرى (چھوٹی)</span>
+                        <span class="jamrat-item">الجمرة الوسطى (درمیانی)</span>
+                        <span class="jamrat-item">الجمرة الكبرى (بڑی)</span>
+                    </div>
+                    <p>ہر جمرہ پر ۷ کنکریاں ماریں گے۔ یاد رکھیں: بھیڑ بہت زیادہ ہوتی ہے، اگر ممکن ہو تو شام ۴:۳۰ سے ۵:۰۰ بجے کے درمیان رمی کے لیے نکلیں تاکہ کم بھیڑ ہو۔</p>
+                    <p><strong>پیدل مکہ جانا:</strong> رمی کے بعد، پیدل مکہ (حرم) جائیں۔ ٹیکسی کی ضرورت نہیں، تقریباً ڈیڑھ گھنٹے میں حرم پہنچ جائیں گے۔ یہ وقت طواف زیارت کے لیے مناسب ہے۔</p>
+                    <p><strong>طواف زیارت + سعی:</strong> مغرب کی نماز کے بعد، مغرب اور عشاء کے درمیان طواف زیارت کریں اور سعی بھی کریں۔</p>
+                    <p><strong>یاد رکھیں:</strong> طواف زیارت اور سعی کے بعد آپ کو مِنٰی واپس آنا ہے۔ چاہیں تو پیدل جائیں ورنہ ٹیکسی لیں۔</p>
+                    <p class="note-text">✨ سُنَّت: ۱۱ اور ۱۲ ذوالحجہ کی راتیں مِنٰی میں گزاریں</p>
+                </div>
+            </div>
+
+            <!-- ENGLISH BLOCK (BOTTOM) -->
+            <div class="lang-block english-block">
+                <div class="lang-header">🇬🇧 ENGLISH</div>
+                <div class="english-content">
+                    <p><strong>🪨 11th Dhul-Hijjah - First Day of Rami (Stoning)</strong></p>
+                    <p>The night that comes after 10th Dhul-Hijjah (the 11th night) and the 12th night should be spent in Mina - this is Sunnah.</p>
+                    <p><strong>Time for Rami:</strong> On the 11th and 12th of Dhul-Hijjah, the time for Rami starts after Zuhr prayer.</p>
+                    <p><strong>Throw stones at ALL THREE Jamarat:</strong></p>
+                    <div class="jamarat-list">
+                        <span class="jamrat-item">Al-Jamrah al-Sughra (Small)</span>
+                        <span class="jamrat-item">Al-Jamrah al-Wusta (Middle)</span>
+                        <span class="jamrat-item">Al-Jamrah al-Kubra (Big)</span>
+                    </div>
+                    <p>7 pebbles at each Jamrah. Remember: Since a large number of pilgrims leave for Rami after Zuhr, if possible, leave for Rami between 4:30 PM and 5:00 PM to avoid rush.</p>
+                    <p><strong>Walk to Mecca:</strong> After Rami, walk to the Haram in Mecca. No need for a taxi - you will reach on foot in about 1.5 hours. This time is suitable for Tawaf al-Ziyarat.</p>
+                    <p><strong>Tawaf al-Ziyarat + Sa'i:</strong> After praying Maghrib, perform Tawaf al-Ziyarat between Maghrib and Isha. Also perform Sa'i.</p>
+                    <p><strong>Remember:</strong> After Tawaf al-Ziyarat and Sa'i, you must return to Mina. You may walk or take a taxi.</p>
+                    <p class="note-text">✨ Sunnah: Spend the nights of 11th and 12th Dhul-Hijjah in Mina</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="day3.html" class="btn btn-prev">⬅️ DAY 3 → Eid</a>
+            <a href="day5.html" class="btn btn-next">➡️ DAY 5 → Final Rami</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

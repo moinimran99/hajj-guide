@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Farewell - Tawaf al-Wida | Hajj Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #8a6e2c, #c9a03d);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 750px;
+            width: 100%;
+        }
+        .card {
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        .header {
+            background: linear-gradient(135deg, #b5838d, #d4a373);
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .header .day-arabic {
+            font-family: 'Scheherazade', 'Amiri', 'Traditional Arabic', serif;
+            font-size: 26px;
+            direction: rtl;
+            color: #ffecb3;
+            margin-top: 8px;
+        }
+        .header .date {
+            font-size: 16px;
+            color: #fef0d9;
+            margin-top: 8px;
+        }
+        .content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        /* Language Block Styles */
+        .lang-block {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .lang-header {
+            padding: 14px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        /* Urdu Block (Top) */
+        .urdu-block {
+            background: #fff8e7;
+        }
+        .urdu-block .lang-header {
+            background: #8a6e2c;
+            color: white;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 22px;
+            direction: rtl;
+        }
+        .urdu-content {
+            padding: 20px;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #5a3e1b;
+            line-height: 1.7;
+            text-align: right;
+        }
+        /* English Block (Bottom) */
+        .english-block {
+            background: #e8f0fe;
+        }
+        .english-block .lang-header {
+            background: #2c7da0;
+            color: white;
+            text-align: left;
+            font-size: 20px;
+        }
+        .english-content {
+            padding: 20px;
+            font-size: 20px;
+            color: #1a3a4a;
+            line-height: 1.5;
+        }
+        /* Common content styling */
+        .english-content p, .urdu-content p {
+            margin-bottom: 16px;
+        }
+        .english-content p:last-child, .urdu-content p:last-child {
+            margin-bottom: 0;
+        }
+        .completion-text {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px dashed #2e7d32;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .dua-box {
+            background: #f0e6d2;
+            border-radius: 20px;
+            padding: 12px 16px;
+            margin: 12px 0 8px 0;
+            text-align: center;
+        }
+        .dua-box .arabic-dua {
+            font-family: 'Scheherazade', 'Amiri', serif;
+            font-size: 22px;
+            direction: rtl;
+            color: #5a3e1b;
+            line-height: 1.6;
+        }
+        .urdu-content .dua-box {
+            background: #efe0c9;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            padding: 0 24px 24px 24px;
+            gap: 12px;
+        }
+        .btn {
+            background: #b5838d;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #8a6e5e;
+            transform: scale(1.02);
+        }
+        .btn-prev {
+            background: #2c7da0;
+        }
+        .btn-prev:hover {
+            background: #1f5e7a;
+        }
+        .btn-home {
+            background: #e6a017;
+        }
+        .btn-home:hover {
+            background: #c98a0c;
+        }
+        /* Small screens adjustment */
+        @media (max-width: 550px) {
+            .english-content {
+                font-size: 17px;
+            }
+            .urdu-content {
+                font-size: 20px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+            .dua-box .arabic-dua {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="header">
+            <h1>🤲 FAREWELL - TAWAF AL-WIDA</h1>
+            <div class="day-arabic">طَوَافُ الْوَدَاعِ</div>
+            <div class="date">رخصتی کا طواف - واپسی سے پہلے</div>
+        </div>
+
+        <div class="content">
+            <!-- URDU BLOCK (TOP) -->
+            <div class="lang-block urdu-block">
+                <div class="lang-header">🇵🇰 اُرْدُو</div>
+                <div class="urdu-content">
+                    <p><strong>🤲 طواف وداع (Tawaf al-Wida)</strong></p>
+                    <p>آپ پر ایک آخری فریضہ باقی ہے، اور وہ یہ کہ مدینہ جانے سے پہلے یا وطن واپس جانے سے پہلے، آپ طواف وداع ادا کریں۔</p>
+                    <p>اسے رخصتی کا طواف بھی کہا جاتا ہے۔</p>
+                    
+                    <div class="dua-box">
+                        <div class="arabic-dua">اللَّهُمَّ إِنِّي أَسْأَلُكَ رِضَاكَ وَالْجَنَّةَ</div>
+                        <p style="font-size: 16px; margin-top: 8px;">اے اللہ! میں تجھ سے تیری رضا اور جنت کا سوال کرتا ہوں۔</p>
+                    </div>
+                    
+                    <p><strong>نوٹ:</strong> طواف وداع حاجی پر واجب ہے۔ اس کے بغیر حج مکمل نہیں ہوتا۔</p>
+                    <p>جب آپ یہ طواف کر لیں تو آپ کا حج مکمل ہو گیا۔</p>
+                    
+                    <div class="completion-text">
+                        ✅ طواف وداع کے بعد → حج کے تمام اعمال مکمل ہو گئے<br>
+                        🤲 اللہ آپ کا حج قبول فرمائے! آمین
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENGLISH BLOCK (BOTTOM) -->
+            <div class="lang-block english-block">
+                <div class="lang-header">🇬🇧 ENGLISH</div>
+                <div class="english-content">
+                    <p><strong>🤲 Farewell Tawaf (Tawaf al-Wida)</strong></p>
+                    <p>There is one last obligation left for you. Before leaving for Medina or before leaving for your home country, you must perform the Farewell Tawaf.</p>
+                    <p>This is also called Tawaf al-Wida (the farewell circumambulation).</p>
+                    
+                    <div class="dua-box">
+                        <div class="arabic-dua">اللَّهُمَّ إِنِّي أَسْأَلُكَ رِضَاكَ وَالْجَنَّةَ</div>
+                        <p style="font-size: 16px; margin-top: 8px;">O Allah, I ask You for Your pleasure and Paradise.</p>
+                    </div>
+                    
+                    <p><strong>Note:</strong> Tawaf al-Wida is obligatory (wajib) for the pilgrim. Hajj is not complete without it.</p>
+                    <p>Once you have performed this Tawaf, your Hajj is complete.</p>
+                    
+                    <div class="completion-text">
+                        ✅ After Farewell Tawaf → All Hajj rituals are complete<br>
+                        🤲 May Allah accept your Hajj! Ameen
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="day5.html" class="btn btn-prev">⬅️ DAY 5 → Final Rami</a>
+            <a href="day1.html" class="btn btn-home">🏠 START → Day 1</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

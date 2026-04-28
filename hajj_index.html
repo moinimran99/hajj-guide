@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hajj Guide 2026 - 5 Days of Hajj | Urdu + English</title>
+    
+    <!-- Facebook / Social Media Meta Tags for Beautiful Preview -->
+    <meta property="og:title" content="🕋 Hajj Guide 2026 - 5 Days Made Simple">
+    <meta property="og:description" content="Complete day-by-day guide to Hajj rituals (8th–12th Dhul-Hijjah) in Urdu & English. Easy to read on mobile.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=🕋+Hajj+Guide+2026">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #c9a03d, #e8c468);
+            border-radius: 40px 40px 30px 30px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            font-size: 32px;
+            color: #1e3a2f;
+            margin-bottom: 8px;
+        }
+        .header .urdu-title {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            font-size: 28px;
+            direction: rtl;
+            color: #2c4a2e;
+            margin-top: 8px;
+        }
+        .header .arabic-title {
+            font-family: 'Scheherazade', 'Amiri', serif;
+            font-size: 22px;
+            direction: rtl;
+            color: #5a3e1b;
+            margin-top: 8px;
+        }
+        .header p {
+            font-size: 14px;
+            color: #2c2c2c;
+            margin-top: 12px;
+        }
+        
+        /* Introduction Section */
+        .intro-section {
+            background: white;
+            border-radius: 30px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .intro-header {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c7da0;
+            border-bottom: 3px solid #e8c468;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .intro-header.urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 24px;
+            direction: rtl;
+            color: #8a6e2c;
+        }
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #2c3e2f;
+            margin-bottom: 24px;
+        }
+        .intro-text.urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 22px;
+            direction: rtl;
+            color: #5a3e1b;
+            line-height: 1.7;
+        }
+        .days-summary {
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .days-summary span {
+            display: inline-block;
+            background: #2c7da0;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 30px;
+            margin: 3px;
+            font-size: 14px;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .card-header {
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .card-header h3 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .card-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .card-header .arabic {
+            font-family: 'Scheherazade', 'Amiri', serif;
+            font-size: 18px;
+            margin-top: 8px;
+        }
+        .card-content {
+            padding: 16px;
+            text-align: center;
+        }
+        .card-content .english {
+            font-size: 14px;
+            color: #2c3e2f;
+            margin-bottom: 8px;
+        }
+        .card-content .urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 16px;
+            direction: rtl;
+            color: #7a5a2a;
+        }
+        .card-footer {
+            background: #f5f5f0;
+            padding: 12px;
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Card Colors */
+        .card1 .card-header { background: linear-gradient(135deg, #2c7da0, #61a5c2); }
+        .card2 .card-header { background: linear-gradient(135deg, #e63946, #d62828); }
+        .card3 .card-header { background: linear-gradient(135deg, #f4a261, #e76f51); }
+        .card4 .card-header { background: linear-gradient(135deg, #40916c, #52b788); }
+        .card5 .card-header { background: linear-gradient(135deg, #6d4c9c, #8b6cb0); }
+        .card6 .card-header { background: linear-gradient(135deg, #b5838d, #d4a373); }
+        
+        /* Instruction Box */
+        .instruction-box {
+            background: #e8f0fe;
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: center;
+            border: 2px dashed #2c7da0;
+        }
+        .instruction-box p {
+            font-size: 16px;
+            color: #1a3a4a;
+        }
+        .instruction-box .urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 18px;
+            direction: rtl;
+            color: #5a3e1b;
+            margin-top: 8px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1e3a2f;
+            border-radius: 30px;
+            padding: 20px;
+            text-align: center;
+            color: #e8c468;
+        }
+        .footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .footer .urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 16px;
+            direction: rtl;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 24px; }
+            .header .urdu-title { font-size: 22px; }
+            .intro-text { font-size: 16px; }
+            .intro-text.urdu { font-size: 18px; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    
+    <!-- HEADER -->
+    <div class="header">
+        <h1>🕋 HAJJ GUIDE 2026</h1>
+        <div class="urdu-title">حج کے ایام اور اعمال - آسان گائیڈ</div>
+        <div class="arabic-title">٨–١٢ ذُو الْحِجَّةِ</div>
+        <p>8th – 12th Dhul-Hijjah | ۵ دن | 5 Days of Hajj</p>
+    </div>
+    
+    <!-- INTRODUCTION - ENGLISH -->
+    <div class="intro-section">
+        <div class="intro-header">📖 INTRODUCTION - ENGLISH</div>
+        <div class="intro-text">
+            <p><strong>Hajj Days and Rituals of Hajj - Short and Easy Guidance Notes</strong></p>
+            <p>There are five days of Hajj: 8th, 9th, 10th, 11th and 12th Dhul-Hijjah.</p>
+            <div class="days-summary">
+                <span>📅 8th Dhul-Hijjah</span> → <span>🔥 9th Dhul-Hijjah</span> → <span>🐐 10th Dhul-Hijjah</span> → <span>🪨 11th Dhul-Hijjah</span> → <span>🏁 12th Dhul-Hijjah</span>
+            </div>
+            <p><strong>What is Hajj?</strong> Hajj is the pilgrimage to Mecca that every Muslim must perform at least once in their lifetime if able. The most important day is the 9th of Dhul-Hijjah – the Day of Arafah. Without standing in Arafah, there is no Hajj.</p>
+            <p><strong>The 5 Days at a Glance:</strong></p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li><strong>8th Dhul-Hijjah:</strong> Put on Ihram, go to Mina, pray 5 prayers.</li>
+                <li><strong>9th Dhul-Hijjah (Arafah):</strong> Stand in Arafat all day, then go to Muzdalifah.</li>
+                <li><strong>10th Dhul-Hijjah (Eid):</strong> Rami (stoning), Sacrifice, Shave head, Tawaf al-Ziyarat.</li>
+                <li><strong>11th Dhul-Hijjah:</strong> Rami at 3 Jamarat, stay in Mina.</li>
+                <li><strong>12th Dhul-Hijjah:</strong> Final Rami at 3 Jamarat, return to Mecca.</li>
+                <li><strong>Before Leaving:</strong> Farewell Tawaf (Tawaf al-Wida).</li>
+            </ul>
+            <p style="margin-top: 15px;">✨ Below you will find detailed guides for each day. Click on any card to view the complete rituals for that day in Urdu and English. May Allah accept your Hajj! Ameen.</p>
+        </div>
+    </div>
+    
+    <!-- INTRODUCTION - URDU -->
+    <div class="intro-section">
+        <div class="intro-header urdu">📖 تعارف - اُرْدُو</div>
+        <div class="intro-text urdu">
+            <p><strong>حج کے ایام اور اعمال - مختصر اور آسان رہنمائی نوٹس</strong></p>
+            <p>حج کے پانچ دن ہیں: ۸، ۹، ۱۰، ۱۱ اور ۱۲ ذوالحجہ۔</p>
+            <div class="days-summary" style="direction: rtl;">
+                <span>📅 ۸ ذوالحجہ</span> → <span>🔥 ۹ ذوالحجہ</span> → <span>🐐 ۱۰ ذوالحجہ</span> → <span>🪨 ۱۱ ذوالحجہ</span> → <span>🏁 ۱۲ ذوالحجہ</span>
+            </div>
+            <p><strong>حج کیا ہے؟</strong> حج مکہ کا سفر ہے جو ہر صاحب استطاعت مسلمان پر زندگی میں کم از کم ایک بار فرض ہے۔ سب سے اہم دن ۹ ذوالحجہ ہے - یوم عرفہ۔ عرفہ میں وقوف کے بغیر حج نہیں ہوتا۔</p>
+            <p><strong>۵ دن ایک نظر میں:</strong></p>
+            <ul style="margin-right: 25px; margin-top: 10px; list-style-position: inside;">
+                <li><strong>۸ ذوالحجہ:</strong> اِحْرام باندھیں، مِنٰی جائیں، ۵ نمازیں پڑھیں۔</li>
+                <li><strong>۹ ذوالحجہ (عرفہ):</strong> پورا دن عرفات میں گزاریں، پھر مزدلفہ جائیں۔</li>
+                <li><strong>۱۰ ذوالحجہ (عید):</strong> رمی، قربانی، سر منڈانا، طواف زیارت۔</li>
+                <li><strong>۱۱ ذوالحجہ:</strong> ۳ جمرات پر رمی، مِنٰی میں قیام۔</li>
+                <li><strong>۱۲ ذوالحجہ:</strong> آخری رمی (۳ جمرات)، مکہ واپسی۔</li>
+                <li><strong>رخصتی سے پہلے:</strong> طواف وداع۔</li>
+            </ul>
+            <p style="margin-top: 15px;">✨ نیچے ہر دن کی تفصیلی گائیڈ دی گئی ہے۔ کسی بھی کارڈ پر کلک کریں اور اُس دن کے مکمل اعمال اردو اور انگریزی میں پڑھیں۔ اللہ آپ کا حج قبول فرمائے! آمین۔</p>
+        </div>
+    </div>
+    
+    <!-- INSTRUCTION BOX -->
+    <div class="instruction-box">
+        <p>👇 <strong>Click on any day below to view detailed rituals</strong> 👇</p>
+        <div class="urdu">👇 <strong>کسی بھی دن پر کلک کریں تفصیلی اعمال دیکھنے کے لیے</strong> 👇</div>
+    </div>
+    
+    <!-- 6 CARDS GRID -->
+    <div class="cards-grid">
+        <!-- Day 1 Card -->
+        <a href="day1.html" class="card card1">
+            <div class="card-header">
+                <h3>DAY 1</h3>
+                <p>8th Dhul-Hijjah</p>
+                <div class="arabic">٨ ذُو الْحِجَّةِ</div>
+            </div>
+            <div class="card-content">
+                <div class="english">📍 Mina - Day of Departure</div>
+                <div class="urdu">مِنٰی - روانگی کا دن</div>
+            </div>
+            <div class="card-footer">Ihram + 5 Prayers | اِحْرام + ۵ نمازیں</div>
+        </a>
+        
+        <!-- Day 2 Card -->
+        <a href="day2.html" class="card card2">
+            <div class="card-header">
+                <h3>DAY 2 ⚠️</h3>
+                <p>9th Dhul-Hijjah</p>
+                <div class="arabic">يَوْمُ عَرَفَةَ</div>
+            </div>
+            <div class="card-content">
+                <div class="english">🔥 Arafah - Most Important Day</div>
+                <div class="urdu">عرفہ کا دن - سب سے اہم دن</div>
+            </div>
+            <div class="card-footer">Stand in Arafat → Muzdalifah | عرفات → مزدلفہ</div>
+        </a>
+        
+        <!-- Day 3 Card -->
+        <a href="day3.html" class="card card3">
+            <div class="card-header">
+                <h3>DAY 3</h3>
+                <p>10th Dhul-Hijjah</p>
+                <div class="arabic">يَوْمُ النَّحْرِ</div>
+            </div>
+            <div class="card-content">
+                <div class="english">🐐 Eid al-Adha - Day of Sacrifice</div>
+                <div class="urdu">عید الاضحیٰ - قربانی کا دن</div>
+            </div>
+            <div class="card-footer">Rami → Sacrifice → Shave → Tawaf | رمی → قربانی → حلق → طواف</div>
+        </a>
+        
+        <!-- Day 4 Card -->
+        <a href="day4.html" class="card card4">
+            <div class="card-header">
+                <h3>DAY 4</h3>
+                <p>11th Dhul-Hijjah</p>
+                <div class="arabic">الرَّمْيُ الْأَوَّلُ</div>
+            </div>
+            <div class="card-content">
+                <div class="english">🪨 First Rami - 3 Jamarat</div>
+                <div class="urdu">پہلی رمی - ۳ جمرات</div>
+            </div>
+            <div class="card-footer">7 stones each Jamrah | ہر جمرہ پر ۷ کنکریاں</div>
+        </a>
+        
+        <!-- Day 5 Card -->
+        <a href="day5.html" class="card card5">
+            <div class="card-header">
+                <h3>DAY 5</h3>
+                <p>12th Dhul-Hijjah</p>
+                <div class="arabic">الرَّمْيُ الْأَخِيرُ</div>
+            </div>
+            <div class="card-content">
+                <div class="english">🏁 Final Rami - Return to Mecca</div>
+                <div class="urdu">آخری رمی - مکہ واپسی</div>
+            </div>
+            <div class="card-footer">5 Days Complete | ۵ دن مکمل</div>
+        </a>
+        
+        <!-- Farewell Card -->
+        <a href="farewell.html" class="card card6">
+            <div class="card-header">
+                <h3>FAREWELL</h3>
+                <p>Before Leaving Mecca</p>
+                <div class="arabic">طَوَافُ الْوَدَاعِ</div>
+            </div>
+            <div class="card-content">
+                <div class="english">🤲 Tawaf al-Wida</div>
+                <div class="urdu">طواف وداع</div>
+            </div>
+            <div class="card-footer">Last Obligation | آخری فریضہ</div>
+        </a>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>🕋 May Allah accept your Hajj and all acts of worship</p>
+        <div class="urdu">🕋 اللہ آپ کا حج اور تمام عبادات قبول فرمائے</div>
+        <p style="margin-top: 10px; font-size: 12px;">📅 8th – 12th Dhul-Hijjah | ۸ تا ۱۲ ذوالحجہ</p>
+        <p style="font-size: 11px;">Click on any card → Read detailed rituals → Share with fellow pilgrims</p>
+        <div class="urdu" style="font-size: 11px;">کسی بھی کارڈ پر کلک کریں → تفصیلات پڑھیں → حجاج کرام میں شیئر کریں</div>
+    </div>
+    
+</div>
+</body>
+</html>
