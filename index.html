@@ -393,5 +393,19 @@
     </div>
     
 </div>
+        <!-- Visitor Counter -->
+    <div style="text-align: center; font-size: 12px; color: #6c757d; margin-top: 20px; padding: 10px;">
+        📊 Total visitors: <span id="visitor-count">Loading...</span>
+    </div>
+    <script>
+        fetch('https://api.countapi.xyz/hit/moinimran99-hajj-guide/visits')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitor-count').innerText = data.value;
+            })
+            .catch(() => {
+                document.getElementById('visitor-count').innerText = '✨';
+            });
+    </script>
 </body>
 </html>
