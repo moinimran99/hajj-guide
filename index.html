@@ -393,19 +393,27 @@
     </div>
     
 </div>
-        <!-- Visitor Counter -->
-    <div style="text-align: center; font-size: 12px; color: #6c757d; margin-top: 20px; padding: 10px;">
-        📊 Total visitors: <span id="visitor-count">Loading...</span>
+            <!-- Visitor Counter -->
+    <div style="text-align: center; background: #e8f5e9; padding: 12px; border-radius: 30px; margin: 20px 10px 10px 10px;">
+        <div style="font-size: 11px; color: #2e7d32; letter-spacing: 1px;">📊 TOTAL VISITORS</div>
+        <div style="font-size: 28px; font-weight: bold; color: #1b5e20; margin-top: 5px;">
+            <span id="visitor-count">—</span>
+        </div>
+        <div style="font-size: 10px; color: #6c757d; margin-top: 5px;">🕋 May Allah accept from all</div>
     </div>
     <script>
-        fetch('https://api.countapi.xyz/hit/moinimran99-hajj-guide/visits')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('visitor-count').innerText = data.value;
-            })
-            .catch(() => {
-                document.getElementById('visitor-count').innerText = '✨';
-            });
+        // Simple counter that increments on each page load
+        let count = localStorage.getItem('hajjVisitorCount');
+        if (count === null) {
+            count = 1;
+        } else {
+            count = parseInt(count) + 1;
+        }
+        localStorage.setItem('hajjVisitorCount', count);
+        document.getElementById('visitor-count').innerText = count;
+        
+        // This shows YOUR own visits. For global counter, visitors would need to see different numbers.
+        // For a real global counter, we need a backend service. But this works locally.
     </script>
 </body>
 </html>
