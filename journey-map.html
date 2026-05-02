@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hajj Journey Map - One Card View</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .journey-card {
+            max-width: 750px;
+            width: 100%;
+            background: #fef9e6;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #2c7da0, #61a5c2);
+            padding: 18px 16px;
+            text-align: center;
+        }
+        .card-header h2 {
+            font-size: 20px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .card-header .sub {
+            font-size: 12px;
+            color: #e0f7fa;
+            margin-top: 4px;
+        }
+        .map-content {
+            padding: 20px;
+        }
+        
+        /* Journey Path Container */
+        .journey-path {
+            background: #fff8e7;
+            border-radius: 24px;
+            padding: 20px 15px;
+            position: relative;
+        }
+        
+        /* Forward Journey (Going) */
+        .forward-journey {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .journey-label {
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #2c7da0;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            background: #e8f0fe;
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 20px;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Location markers row */
+        .locations-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .location-marker {
+            text-align: center;
+            flex: 1;
+            min-width: 70px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .marker-icon {
+            font-size: 38px;
+            display: block;
+        }
+        .marker-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #2c3e2f;
+            margin-top: 6px;
+        }
+        .marker-day {
+            font-size: 9px;
+            color: #8a6e2c;
+            background: #fff3cd;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+        .marker-distance {
+            font-size: 9px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+        
+        /* Connecting line */
+        .connector-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5px;
+            margin: 5px 0 10px 0;
+        }
+        .line {
+            flex: 1;
+            height: 2px;
+            background: #c9a03d;
+            position: relative;
+        }
+        .distance-badge {
+            font-size: 9px;
+            background: white;
+            padding: 2px 8px;
+            border-radius: 20px;
+            color: #8a6e2c;
+            border: 1px solid #e8c468;
+            white-space: nowrap;
+        }
+        
+        /* Return Journey (Back) */
+        .return-journey {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #c9a03d;
+            position: relative;
+        }
+        
+        .return-label {
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #b5838d;
+            background: #fef0e6;
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 20px;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+        }
+        
+        /* Arafah highlight */
+        .highlight {
+            background: #ffebee;
+            border-radius: 20px;
+            padding: 8px 5px;
+            position: relative;
+        }
+        .highlight-note {
+            font-size: 9px;
+            color: #e63946;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #f0e0c0;
+            font-size: 9px;
+            color: #8a6e2c;
+            flex-wrap: wrap;
+        }
+        .legend span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            margin-right: 4px;
+        }
+        .legend .forward-color { background: #2c7da0; }
+        .legend .return-color { background: #b5838d; }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 10px;
+            color: #8a6e2c;
+            background: #fff8e7;
+            padding: 8px;
+            border-radius: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .location-marker {
+                min-width: 55px;
+            }
+            .marker-icon {
+                font-size: 28px;
+            }
+            .marker-name {
+                font-size: 9px;
+            }
+            .marker-day {
+                font-size: 7px;
+            }
+            .distance-badge {
+                font-size: 7px;
+                padding: 2px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="journey-card">
+    <div class="card-header">
+        <h2>🕋 HAJJ JOURNEY MAP | حج کا راستہ</h2>
+        <div class="sub">8th - 12th Dhul-Hijjah | ۸ تا ۱۲ ذوالحجہ</div>
+    </div>
+    
+    <div class="map-content">
+        <div class="journey-path">
+            
+            <!-- FORWARD JOURNEY (Going away from Mecca) -->
+            <div class="forward-journey">
+                <div class="journey-label">🌅 GOING FORWARD | جا رہے ہیں</div>
+                
+                <div class="locations-row">
+                    <div class="location-marker">
+                        <span class="marker-icon">🕋</span>
+                        <div class="marker-name">MECCA</div>
+                        <div class="marker-day">Start</div>
+                    </div>
+                    <div class="location-marker">
+                        <span class="marker-icon">🏕️</span>
+                        <div class="marker-name">MINA</div>
+                        <div class="marker-day">Day 1-2</div>
+                    </div>
+                    <div class="location-marker highlight">
+                        <span class="marker-icon">⛰️</span>
+                        <div class="marker-name">ARAFAH</div>
+                        <div class="marker-day">🔥 Day 2</div>
+                        <div class="highlight-note">Most Important</div>
+                    </div>
+                </div>
+                
+                <div class="connector-line">
+                    <div class="line"></div>
+                    <span class="distance-badge">~8 km</span>
+                    <div class="line"></div>
+                    <span class="distance-badge">~15 km</span>
+                    <div class="line"></div>
+                </div>
+                <div style="text-align: center; margin-top: -5px; margin-bottom: 5px;">
+                    <span style="font-size: 10px; color: #8a6e2c;">8th → 9th Dhul-Hijjah</span>
+                </div>
+            </div>
+            
+            <!-- MUZDALIFAH (After sunset, between Arafah and return) -->
+            <div style="text-align: center; margin: 5px 0 15px 0;">
+                <span style="font-size: 28px;">↓</span>
+                <span class="distance-badge" style="margin: 0 10px;">~5 km</span>
+                <span style="font-size: 28px;">↓</span>
+            </div>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="display: inline-block; text-align: center; background: #e8f0fe; padding: 8px 20px; border-radius: 30px;">
+                    <span style="font-size: 28px; display: block;">🌙</span>
+                    <div style="font-size: 13px; font-weight: bold;">MUZDALIFAH</div>
+                    <div style="font-size: 10px; color: #6c757d;">Night Stay + Collect Pebbles</div>
+                    <div style="font-size: 9px; color: #8a6e2c;">Day 2-3 | 9th-10th Dhul-Hijjah</div>
+                </div>
+            </div>
+            
+            <!-- RETURN JOURNEY (Coming back toward Mecca) -->
+            <div class="return-journey">
+                <div class="return-label">🔄 RETURNING | واپسی</div>
+                
+                <div class="locations-row">
+                    <div class="location-marker">
+                        <span class="marker-icon">🏕️</span>
+                        <div class="marker-name">MINA</div>
+                        <div class="marker-day">Day 3-5</div>
+                    </div>
+                    <div class="location-marker">
+                        <span class="marker-icon">🏛️🏛️🏛️</span>
+                        <div class="marker-name">JAMARAT</div>
+                        <div class="marker-day">3 Pillars</div>
+                    </div>
+                    <div class="location-marker">
+                        <span class="marker-icon">🕋</span>
+                        <div class="marker-name">MECCA</div>
+                        <div class="marker-day">Farewell</div>
+                    </div>
+                </div>
+                
+                <div class="connector-line">
+                    <div class="line"></div>
+                    <span class="distance-badge">~10 km</span>
+                    <div class="line"></div>
+                    <span class="distance-badge">~8 km</span>
+                    <div class="line"></div>
+                </div>
+                <div style="text-align: center; margin-top: -5px;">
+                    <span style="font-size: 10px; color: #8a6e2c;">10th → 12th Dhul-Hijjah</span>
+                </div>
+            </div>
+            
+            <!-- Rami Details -->
+            <div style="background: #f5f0e0; border-radius: 20px; padding: 12px; margin-top: 20px; text-align: center;">
+                <div style="font-size: 13px; font-weight: bold; color: #5a3e1b;">🪨 RAMI AT JAMARAT (Mina)</div>
+                <div style="display: flex; justify-content: center; gap: 15px; margin-top: 8px; flex-wrap: wrap;">
+                    <div><span style="font-size: 20px;">🏛️</span><br><span style="font-size: 9px;">Small</span><br><span style="font-size: 9px;">7 stones</span></div>
+                    <div><span style="font-size: 20px;">🏛️</span><br><span style="font-size: 9px;">Middle</span><br><span style="font-size: 9px;">7 stones</span></div>
+                    <div><span style="font-size: 20px;">🏛️</span><br><span style="font-size: 9px;">Big</span><br><span style="font-size: 9px;">7 stones</span></div>
+                </div>
+                <div style="font-size: 9px; color: #8a6e2c; margin-top: 6px;">11th & 12th Dhul-Hijjah | After Zuhr prayer</div>
+            </div>
+            
+            <!-- Legend -->
+            <div class="legend">
+                <div><span class="forward-color"></span> Forward Journey (8th-9th)</div>
+                <div><span class="return-color"></span> Return Journey (10th-12th)</div>
+                <div>🕋 Start & End: Mecca</div>
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            📍 Far point: Arafah (~23 km from Mecca) | Total journey: ~46 km round trip
+        </div>
+    </div>
+</div>
+</body>
+</html>
