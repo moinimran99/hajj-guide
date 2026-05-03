@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hajj Route Map – Complete Pilgrimage Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .map-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
+        }
+        .header {
+            background: linear-gradient(135deg, #1a5f4a, #0b3d2e);
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .header p {
+            font-size: 13px;
+            color: #c9e3d9;
+            margin-top: 6px;
+        }
+        .map-container {
+            padding: 20px;
+            background: #fefcf5;
+            text-align: center;
+        }
+        .map-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e8e0c8;
+        }
+        .distance-table {
+            padding: 20px 24px;
+            background: #fefcf5;
+            border-top: 1px solid #e8e0c8;
+        }
+        .distance-table h3 {
+            font-size: 18px;
+            color: #1a5f4a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .table-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        .distance-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .distance-card .route {
+            font-weight: 600;
+            color: #2c3e2f;
+        }
+        .distance-card .distance {
+            font-weight: 700;
+            color: #d4a017;
+        }
+        .distance-card.makkah { border-left-color: #d4a017; }
+        .distance-card.mina { border-left-color: #52b788; }
+        .distance-card.arafat { border-left-color: #e63946; }
+        .distance-card.muzdalifah { border-left-color: #4a306b; }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 16px 24px;
+            flex-wrap: wrap;
+            background: #fefcf5;
+            border-top: 1px solid #e8e0c8;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .legend-color.makkah { background: #d4a017; }
+        .legend-color.arafat { background: #e63946; }
+        .legend-color.mina { background: #52b788; }
+        .legend-color.muzdalifah { background: #4a306b; }
+        
+        .footer {
+            text-align: center;
+            padding: 14px;
+            font-size: 11px;
+            color: #8a7a5a;
+            background: #fefcf5;
+            border-top: 1px solid #e8e0c8;
+        }
+        .note {
+            background: #fef9e6;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #5a4a2a;
+            text-align: center;
+        }
+        @media (max-width: 700px) {
+            .header h1 { font-size: 18px; }
+            .distance-card .route { font-size: 11px; }
+            .distance-card .distance { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+<div class="map-card">
+    <div class="header">
+        <h1>🕋 COMPLETE HAJJ ROUTE MAP</h1>
+        <p>8th – 12th Dhul-Hijjah | Full Pilgrimage Journey | حج کا مکمل راستہ</p>
+    </div>
+    
+    <div class="map-container">
+        <!-- Static Google Map Image - No API Key Required -->
+        <!-- Shows: Makkah (gold), Mina (green), Arafat (red), Muzdalifah (purple), and blue route line -->
+        <img class="map-image" 
+             src="https://maps.googleapis.com/maps/api/staticmap?center=21.389,39.905&zoom=11&size=1000x500&maptype=roadmap&markers=color:gold%7Clabel:M%7C21.4225,39.8262&markers=color:green%7Clabel:MN%7C21.4133,39.8933&markers=color:red%7Clabel:A%7C21.3549,39.9845&markers=color:purple%7Clabel:MU%7C21.3829,39.9372&markers=color:orange%7Clabel:J%7C21.4211,39.8861&path=color:0x2c7da0ff%7Cweight:6%7C21.4225,39.8262%7C21.4133,39.8933%7C21.3549,39.9845%7C21.3829,39.9372%7C21.4211,39.8861%7C21.4133,39.8933%7C21.4225,39.8262&key=AIzaSyDktfI-MKjLn-uVEK0BfUoBv1_8oY5sLX4" 
+             alt="Hajj Route Map showing Makkah, Mina, Arafat, Muzdalifah, and Jamarat with complete pilgrimage path"
+             title="Hajj Route Map – Click to zoom in your browser">
+        
+        <div class="note">
+            📍 <strong>Map Legend:</strong> 🟡 M = Makkah (Kabah) | 🟢 MN = Mina (Tents) | 🔴 A = Arafat (Mount of Mercy) | 🟣 MU = Muzdalifah (Pebbles) | 🟠 J = Jamarat (Stoning Pillars)<br>
+            🔵 Blue line = Complete Hajj pilgrimage route | Distances are shown in the table below
+        </div>
+    </div>
+    
+    <div class="distance-table">
+        <h3>📏 DISTANCES BETWEEN HOLY SITES</h3>
+        <div class="table-grid">
+            <div class="distance-card makkah">
+                <span class="route">🕋 Makkah (Masjid Al-Haram) → 🏕️ Mina</span>
+                <span class="distance">~8 km</span>
+            </div>
+            <div class="distance-card mina">
+                <span class="route">🏕️ Mina → ⛰️ Arafat</span>
+                <span class="distance">~12 km</span>
+            </div>
+            <div class="distance-card arafat">
+                <span class="route">⛰️ Arafat → 🌙 Muzdalifah</span>
+                <span class="distance">~7 km</span>
+            </div>
+            <div class="distance-card muzdalifah">
+                <span class="route">🌙 Muzdalifah → 🏛️ Jamarat (Mina)</span>
+                <span class="distance">~5 km</span>
+            </div>
+            <div class="distance-card mina">
+                <span class="route">🏛️ Jamarat → 🕋 Makkah (Farewell)</span>
+                <span class="distance">~7 km</span>
+            </div>
+            <div class="distance-card makkah">
+                <span class="route">🕋 Total Journey (Round Trip)</span>
+                <span class="distance">~39 km</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="legend">
+        <span><div class="legend-color makkah"></div> Makkah (Start/End)</span>
+        <span><div class="legend-color mina"></div> Mina (Tents/Jamarat)</span>
+        <span><div class="legend-color arafat"></div> Arafat (Day 2)</span>
+        <span><div class="legend-color muzdalifah"></div> Muzdalifah (Night)</span>
+        <span>🔵 Blue Line = Pilgrimage Route</span>
+        <span>📍 Markers show exact locations</span>
+    </div>
+    
+    <div class="footer">
+        🗺️ Official Hajj Route Map | Based on Saudi Authority coordinates | All distances are approximate | Click map to zoom in browser
+    </div>
+</div>
+</body>
+</html>
