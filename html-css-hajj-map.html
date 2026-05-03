@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hajj Journey Map – HTML/CSS Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .map-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #2c7da0, #61a5c2);
+            padding: 20px;
+            text-align: center;
+        }
+        .card-header h1 {
+            font-size: 24px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .card-header p {
+            font-size: 13px;
+            color: #e0f7fa;
+            margin-top: 6px;
+        }
+        
+        /* Journey Section */
+        .journey-section {
+            padding: 24px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            width: auto;
+            margin: 0 auto 20px auto;
+            color: white;
+        }
+        .section-title.gold { background: #c9a03d; }
+        .section-title.purple { background: #b5838d; }
+        
+        /* Flow Container */
+        .flow-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        
+        /* Location Card */
+        .location-card {
+            background: white;
+            border-radius: 20px;
+            padding: 15px 12px;
+            min-width: 100px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 5px solid;
+            flex: 1;
+        }
+        .location-card.makkah { border-top-color: #c9a03d; }
+        .location-card.mina { border-top-color: #52b788; }
+        .location-card.arafah { border-top-color: #e63946; }
+        .location-card.muzdalifah { border-top-color: #4a306b; }
+        .location-card.jamarat { border-top-color: #d4a373; }
+        
+        .location-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+        .location-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e2f;
+        }
+        .location-detail {
+            font-size: 11px;
+            color: #8a6e2c;
+            margin-top: 4px;
+        }
+        
+        /* Arrow Connector */
+        .arrow-connector {
+            font-size: 24px;
+            color: #c9a03d;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+        .arrow-connector.purple {
+            color: #b5838d;
+        }
+        
+        /* Distance Badge */
+        .distance-badge {
+            background: white;
+            border: 1px solid #c9a03d;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #c9a03d;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .distance-badge.purple {
+            border-color: #b5838d;
+            color: #b5838d;
+        }
+        
+        /* Divider */
+        .journey-divider {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        .journey-divider span {
+            background: #fef9e6;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #8a6e2c;
+            border-radius: 30px;
+            border: 1px dashed #e8c468;
+        }
+        
+        /* Rami Section */
+        .rami-section {
+            background: #fff3e0;
+            border-radius: 24px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .rami-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d4a373;
+            margin-bottom: 15px;
+        }
+        .pillars {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .pillar {
+            text-align: center;
+        }
+        .pillar-icon {
+            font-size: 30px;
+        }
+        .pillar-name {
+            font-size: 11px;
+            font-weight: bold;
+            color: #b97d44;
+            margin-top: 5px;
+        }
+        .pillar-stones {
+            font-size: 9px;
+            color: #8a6e2c;
+        }
+        
+        /* Distance Table */
+        .distance-table {
+            background: #eef5f0;
+            border-radius: 24px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .distance-table h3 {
+            font-size: 16px;
+            color: #1e6b4c;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .distance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        .distance-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .distance-route {
+            font-weight: 600;
+            color: #2c3e2f;
+        }
+        .distance-value {
+            font-weight: 700;
+            color: #c9a03d;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            background: #fff8e7;
+            border-top: 1px solid #f0e0c0;
+            font-size: 11px;
+        }
+        .footer-note {
+            text-align: center;
+            padding: 12px;
+            font-size: 10px;
+            color: #8a6e2c;
+            background: #fff8e7;
+            border-top: 1px solid #f0e0c0;
+        }
+        
+        @media (max-width: 800px) {
+            .flow-container {
+                flex-direction: column;
+            }
+            .arrow-connector {
+                transform: rotate(90deg);
+            }
+            .location-card {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="map-card">
+    <div class="card-header">
+        <h1>🕋 HAJJ JOURNEY MAP | حج کا نقشہ</h1>
+        <p>8th – 12th Dhul-Hijjah • Complete 5-Day Pilgrimage Guide</p>
+    </div>
+    
+    <div class="journey-section">
+        
+        <!-- SECTION 1: FORWARD JOURNEY (8th-10th) -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div class="section-title gold">📅 8th – 10th Dhul-Hijjah (Forward Journey)</div>
+        </div>
+        
+        <div class="flow-container">
+            <div class="location-card makkah">
+                <div class="location-icon">🕋</div>
+                <div class="location-name">MAKKAH</div>
+                <div class="location-detail">Start Point</div>
+            </div>
+            <div class="arrow-connector">
+                <span class="distance-badge">4 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card jamarat">
+                <div class="location-icon">🏛️</div>
+                <div class="location-name">JAMARAT</div>
+                <div class="location-detail">(Pass by)</div>
+            </div>
+            <div class="arrow-connector">
+                <span class="distance-badge">9 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card mina">
+                <div class="location-icon">🏕️</div>
+                <div class="location-name">MINA</div>
+                <div class="location-detail">Day 1-2 Stay</div>
+            </div>
+            <div class="arrow-connector">
+                <span class="distance-badge">4 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card muzdalifah">
+                <div class="location-icon">🌙</div>
+                <div class="location-name">MUZDALIFAH</div>
+                <div class="location-detail">(Pass by)</div>
+            </div>
+            <div class="arrow-connector">
+                <span class="distance-badge">9 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card arafah">
+                <div class="location-icon">⛰️</div>
+                <div class="location-name">ARAFAH</div>
+                <div class="location-detail">🔥 Day 2 – Most Important</div>
+            </div>
+        </div>
+        
+        <!-- RETURN JOURNEY START INDICATOR -->
+        <div class="journey-divider">
+            <span>🔄 Return Journey Begins (After Sunset) 🔄</span>
+        </div>
+        
+        <!-- SECTION 2: RETURN JOURNEY (10th-12th) -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div class="section-title purple">📅 10th – 12th Dhul-Hijjah (Return Journey)</div>
+        </div>
+        
+        <div class="flow-container">
+            <div class="location-card arafah">
+                <div class="location-icon">⛰️</div>
+                <div class="location-name">ARAFAH</div>
+                <div class="location-detail">After Sunset Departure</div>
+            </div>
+            <div class="arrow-connector purple">
+                <span class="distance-badge purple">9 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card muzdalifah">
+                <div class="location-icon">🌙</div>
+                <div class="location-name">MUZDALIFAH</div>
+                <div class="location-detail">🌙 Night Stay + Pebbles</div>
+            </div>
+            <div class="arrow-connector purple">
+                <span class="distance-badge purple">13 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card jamarat">
+                <div class="location-icon">🏛️</div>
+                <div class="location-name">JAMARAT</div>
+                <div class="location-detail">🪨 Rami (7 stones each)</div>
+            </div>
+            <div class="arrow-connector purple">
+                <span class="distance-badge purple">3 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card mina">
+                <div class="location-icon">🏕️</div>
+                <div class="location-name">MINA</div>
+                <div class="location-detail">Day 3-5 Stay</div>
+            </div>
+            <div class="arrow-connector purple">
+                <span class="distance-badge purple">4 km</span> →<br>
+                <span style="font-size: 10px;">●</span>
+            </div>
+            <div class="location-card makkah">
+                <div class="location-icon">🕋</div>
+                <div class="location-name">MAKKAH</div>
+                <div class="location-detail">Farewell Tawaf</div>
+            </div>
+        </div>
+        
+        <!-- RAMI DETAILS -->
+        <div class="rami-section">
+            <div class="rami-title">🪨 RAMI AT JAMARAT (Stoning of the Devil)</div>
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">🏛️</div>
+                    <div class="pillar-name">Al-Jamrah al-Sughra</div>
+                    <div class="pillar-stones">(Small) • 7 stones</div>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">🏛️</div>
+                    <div class="pillar-name">Al-Jamrah al-Wusta</div>
+                    <div class="pillar-stones">(Medium) • 7 stones</div>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">🏛️</div>
+                    <div class="pillar-name">Al-Jamrah al-Kubra</div>
+                    <div class="pillar-stones">(Large) • 7 stones</div>
+                </div>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: #8a6e2c;">
+                📅 Performed on 11th & 12th Dhul-Hijjah after Zuhr prayer
+            </div>
+        </div>
+        
+        <!-- DISTANCE TABLE -->
+        <div class="distance-table">
+            <h3>📏 DISTANCES BETWEEN HOLY SITES</h3>
+            <div class="distance-grid">
+                <div class="distance-row"><span class="distance-route">🕋 Makkah → 🏛️ Jamarat</span><span class="distance-value">4 km</span></div>
+                <div class="distance-row"><span class="distance-route">🏛️ Jamarat → 🏕️ Mina</span><span class="distance-value">9 km</span></div>
+                <div class="distance-row"><span class="distance-route">🏕️ Mina → 🌙 Muzdalifah</span><span class="distance-value">4 km</span></div>
+                <div class="distance-row"><span class="distance-route">🌙 Muzdalifah → ⛰️ Arafah</span><span class="distance-value">9 km</span></div>
+                <div class="distance-row"><span class="distance-route">⛰️ Arafah → 🌙 Muzdalifah (Return)</span><span class="distance-value">9 km</span></div>
+                <div class="distance-row"><span class="distance-route">🌙 Muzdalifah → 🏛️ Jamarat</span><span class="distance-value">13 km</span></div>
+                <div class="distance-row"><span class="distance-route">🏛️ Jamarat → 🏕️ Mina</span><span class="distance-value">3 km</span></div>
+                <div class="distance-row"><span class="distance-route">🏕️ Mina → 🕋 Makkah</span><span class="distance-value">4 km</span></div>
+                <div class="distance-row"><span class="distance-route">🕋 Total Round Trip</span><span class="distance-value">~55 km</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="legend">
+        <span>🟡 8th-10th Dhul-Hijjah (Gold)</span>
+        <span>🟣 10th-12th Dhul-Hijjah (Purple)</span>
+        <span>🕋 Makkah</span>
+        <span>🏕️ Mina</span>
+        <span>🏛️ Jamarat</span>
+        <span>⛰️ Arafah</span>
+        <span>🌙 Muzdalifah</span>
+        <span>● = Start of segment</span>
+        <span>→ = Direction arrow</span>
+    </div>
+    
+    <div class="footer-note">
+        🗺️ Complete Hajj Journey Map | HTML/CSS Version – Works on all devices | All distances are approximate<br>
+        📅 8th-12th Dhul-Hijjah | Follow the arrows (→) for the correct pilgrim route
+    </div>
+</div>
+</body>
+</html>
