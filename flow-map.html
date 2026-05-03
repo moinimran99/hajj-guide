@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hajj Journey Flowchart | One Card Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .flow-card {
+            max-width: 800px;
+            width: 100%;
+            background: #fef9e6;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #2c7da0, #61a5c2);
+            padding: 16px 16px;
+            text-align: center;
+        }
+        .card-header h2 {
+            font-size: 20px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .card-header .sub {
+            font-size: 11px;
+            color: #e0f7fa;
+            margin-top: 3px;
+        }
+        
+        /* Flowchart Container */
+        .flowchart {
+            padding: 25px 20px;
+            background: #fff8e7;
+        }
+        
+        /* Node (location shape) */
+        .node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            background: white;
+        }
+        .shape-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #c9a03d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 3px solid #fff;
+        }
+        .shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 70px solid #52b788;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .shape-triangle .inside {
+            position: absolute;
+            top: 25px;
+            left: -15px;
+            right: -15px;
+            text-align: center;
+        }
+        .shape-square {
+            width: 70px;
+            height: 70px;
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            border: 3px solid #fff;
+        }
+        .shape-diamond {
+            width: 70px;
+            height: 70px;
+            background: #4a306b;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .shape-diamond .inside {
+            transform: rotate(-45deg);
+        }
+        
+        .node-icon {
+            font-size: 32px;
+        }
+        .node-name {
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+            color: #2c3e2f;
+        }
+        .node-day {
+            font-size: 9px;
+            color: #8a6e2c;
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+        
+        /* Row layout */
+        .flow-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        /* Path line with distance */
+        .path {
+            flex: 1;
+            height: 3px;
+            background: #c9a03d;
+            position: relative;
+            margin: 0 10px;
+        }
+        .path::after {
+            content: "→";
+            position: absolute;
+            right: -12px;
+            top: -8px;
+            font-size: 16px;
+            color: #c9a03d;
+        }
+        .distance-label {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 9px;
+            color: #8a6e2c;
+            border: 1px solid #e8c468;
+            white-space: nowrap;
+        }
+        
+        /* Small waypoint (Jamarat on path) */
+        .waypoint {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #d4a373;
+            border-radius: 20px;
+            padding: 3px 10px;
+            white-space: nowrap;
+            font-size: 8px;
+            color: white;
+            font-weight: bold;
+            z-index: 5;
+        }
+        
+        /* Special handling for paths with waypoints */
+        .path-with-waypoint {
+            position: relative;
+            flex: 1;
+            height: 3px;
+            background: #c9a03d;
+            margin: 0 10px;
+        }
+        
+        /* Muzdalifah as a small stop (diamond) */
+        .small-stop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 5px;
+        }
+        .small-shape {
+            width: 45px;
+            height: 45px;
+            background: #4a306b;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .small-shape .inside {
+            transform: rotate(-45deg);
+        }
+        .small-icon {
+            font-size: 24px;
+        }
+        .small-name {
+            font-size: 9px;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+        
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #f0e0c0;
+            font-size: 9px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-shape {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-circle { background: #c9a03d; border-radius: 50%; }
+        .legend-triangle { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 20px solid #52b788; }
+        .legend-square { background: #e63946; border-radius: 4px; }
+        .legend-diamond { background: #4a306b; transform: rotate(45deg); width: 16px; height: 16px; }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 10px;
+            color: #8a6e2c;
+            background: #fff8e7;
+            padding: 8px;
+            border-radius: 20px;
+        }
+        
+        @media (max-width: 650px) {
+            .shape-circle, .shape-square { width: 55px; height: 55px; }
+            .shape-triangle { border-left: 27px solid transparent; border-right: 27px solid transparent; border-bottom: 55px solid #52b788; }
+            .node-icon { font-size: 24px; }
+            .node-name { font-size: 8px; }
+            .node-day { font-size: 7px; }
+            .distance-label { font-size: 7px; top: -16px; }
+            .waypoint { font-size: 6px; padding: 2px 6px; top: -12px; }
+            .small-shape { width: 35px; height: 35px; }
+            .small-icon { font-size: 18px; }
+            .small-name { font-size: 7px; }
+        }
+    </style>
+</head>
+<body>
+<div class="flow-card">
+    <div class="card-header">
+        <h2>🕋 HAJJ JOURNEY FLOWCHART</h2>
+        <div class="sub">8th → 12th Dhul-Hijjah | Actual Path with Distances</div>
+    </div>
+    
+    <div class="flowchart">
+        
+        <!-- ROW 1: MECCA → MINA (Passing Jamarat) -->
+        <div class="flow-row">
+            <div class="node">
+                <div class="shape-circle">
+                    <span class="node-icon">🕋</span>
+                </div>
+                <div class="node-name">MECCA</div>
+                <div class="node-day">Day 1 Start</div>
+            </div>
+            
+            <div style="flex: 3; position: relative;">
+                <div style="height: 3px; background: #c9a03d; position: relative; margin: 0 5px;">
+                    <div class="distance-label" style="left: 30%;">~4 km</div>
+                    <div class="waypoint" style="left: 60%;">🏛️ JAMARAT (Pass by)</div>
+                    <div class="distance-label" style="left: 85%; top: 8px;">~4 km</div>
+                </div>
+            </div>
+            
+            <div class="node">
+                <div class="shape-triangle">
+                    <div class="inside">
+                        <span class="node-icon">🏕️</span>
+                    </div>
+                </div>
+                <div class="node-name">MINA</div>
+                <div class="node-day">Day 1-2</div>
+            </div>
+        </div>
+        
+        <!-- ROW 2: MINA → MUZDALIFAH (passing through) → ARAFAH -->
+        <div class="flow-row" style="margin-top: 30px;">
+            <div class="node">
+                <div class="shape-triangle">
+                    <div class="inside">
+                        <span class="node-icon">🏕️</span>
+                    </div>
+                </div>
+                <div class="node-name">MINA</div>
+                <div class="node-day">Leave Day 2</div>
+            </div>
+            
+            <div style="flex: 4; position: relative;">
+                <div style="height: 3px; background: #c9a03d; position: relative; margin: 0 5px;">
+                    <div class="distance-label" style="left: 25%;">~8 km</div>
+                    
+                    <!-- Muzdalifah as a small stop on the path -->
+                    <div style="position: absolute; left: 50%; transform: translateX(-50%); top: -28px;">
+                        <div class="small-stop">
+                            <div class="small-shape">
+                                <div class="inside">
+                                    <span class="small-icon">🌙</span>
+                                </div>
+                            </div>
+                            <div class="small-name">MUZDALIFAH</div>
+                            <div style="font-size: 7px; color: #8a6e2c;">(Pass through)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="distance-label" style="left: 75%;">~7 km</div>
+                </div>
+            </div>
+            
+            <div class="node">
+                <div class="shape-square">
+                    <span class="node-icon">⛰️</span>
+                </div>
+                <div class="node-name">ARAFAH</div>
+                <div class="node-day">🔥 Day 2 (Most Important)</div>
+            </div>
+        </div>
+        
+        <!-- ROW 3: ARAFAH → MUZDALIFAH (Night stop) → MINA -->
+        <div class="flow-row" style="margin-top: 40px;">
+            <div class="node">
+                <div class="shape-square">
+                    <span class="node-icon">⛰️</span>
+                </div>
+                <div class="node-name">ARAFAH</div>
+                <div class="node-day">After Sunset</div>
+            </div>
+            
+            <div style="flex: 3; position: relative;">
+                <div style="height: 3px; background: #c9a03d; position: relative; margin: 0 5px;">
+                    <div class="distance-label" style="left: 50%;">~5 km</div>
+                    <div class="waypoint" style="left: 80%; background: #4a306b;">🌙 MUZDALIFAH (Night stay)</div>
+                </div>
+            </div>
+            
+            <div class="node">
+                <div class="shape-triangle">
+                    <div class="inside">
+                        <span class="node-icon">🏕️</span>
+                    </div>
+                </div>
+                <div class="node-name">MINA</div>
+                <div class="node-day">Day 3 Return</div>
+            </div>
+        </div>
+        
+        <!-- ROW 4: MINA (Rami at Jamarat) → MECCA -->
+        <div class="flow-row" style="margin-top: 30px;">
+            <div class="node">
+                <div class="shape-triangle">
+                    <div class="inside">
+                        <span class="node-icon">🏕️</span>
+                    </div>
+                </div>
+                <div class="node-name">MINA</div>
+                <div class="node-day">Day 3-5</div>
+            </div>
+            
+            <div style="flex: 3; position: relative;">
+                <div style="height: 3px; background: #c9a03d; position: relative; margin: 0 5px;">
+                    <div class="distance-label" style="left: 30%;">~4 km</div>
+                    <div class="waypoint" style="left: 60%;">🏛️🪨 RAMI at JAMARAT</div>
+                    <div class="distance-label" style="left: 85%; top: 8px;">~4 km</div>
+                </div>
+            </div>
+            
+            <div class="node">
+                <div class="shape-circle">
+                    <span class="node-icon">🕋</span>
+                </div>
+                <div class="node-name">MECCA</div>
+                <div class="node-day">Farewell Tawaf</div>
+            </div>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><div class="legend-shape legend-circle"></div> Start/End (Mecca)</div>
+            <div class="legend-item"><div class="legend-shape legend-triangle"></div> Mina (Tents)</div>
+            <div class="legend-item"><div class="legend-shape legend-square"></div> Arafah (Most Important)</div>
+            <div class="legend-item"><div class="legend-shape legend-diamond"></div> Muzdalifah (Night Stop)</div>
+            <div class="legend-item"><span>🏛️</span> Jamarat (Stoning)</div>
+        </div>
+        
+        <div class="footer-note">
+            📍 Total forward journey: ~19 km (Mecca → Arafah) | Total return: ~17 km (Arafah → Mecca via Mina)<br>
+            🕋 Pilgrim follows this exact path over 5 days
+        </div>
+    </div>
+</div>
+</body>
+</html>
