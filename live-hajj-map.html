@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Live Hajj Route Map – Interactive Pilgrimage Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .map-card {
+            max-width: 1300px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
+        }
+        .header {
+            background: linear-gradient(135deg, #1a5f4a, #0b3d2e);
+            padding: 20px 24px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .header p {
+            font-size: 14px;
+            color: #c9e3d9;
+            margin-top: 6px;
+        }
+        .map-container {
+            padding: 0;
+            position: relative;
+        }
+        #map {
+            height: 550px;
+            width: 100%;
+            background: #e8e0c8;
+        }
+        .distance-table {
+            padding: 20px 24px;
+            background: #fefcf5;
+            border-top: 1px solid #e8e0c8;
+        }
+        .distance-table h3 {
+            font-size: 18px;
+            color: #1a5f4a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .table-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        .distance-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .distance-card .route {
+            font-weight: 600;
+            color: #2c3e2f;
+        }
+        .distance-card .distance {
+            font-weight: 700;
+            color: #d4a017;
+        }
+        .distance-card.mina { border-left-color: #52b788; }
+        .distance-card.arafat { border-left-color: #e63946; }
+        .distance-card.muzdalifah { border-left-color: #4a306b; }
+        .distance-card.makkah { border-left-color: #d4a017; }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 16px 24px;
+            flex-wrap: wrap;
+            background: #fefcf5;
+            border-top: 1px solid #e8e0c8;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .legend-color.makkah { background: #d4a017; }
+        .legend-color.arafat { background: #e63946; }
+        .legend-color.mina { background: #52b788; }
+        .legend-color.muzdalifah { background: #4a306b; }
+        
+        .footer {
+            text-align: center;
+            padding: 14px;
+            font-size: 11px;
+            color: #8a7a5a;
+            background: #fefcf5;
+            border-top: 1px solid #e8e0c8;
+        }
+        .instructions {
+            background: #f0f4f0;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #2c3e2f;
+        }
+        .instructions a {
+            color: #1a5f4a;
+        }
+        @media (max-width: 700px) {
+            .header h1 { font-size: 20px; }
+            .distance-card { padding: 10px 12px; }
+            .distance-card .route { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="map-card">
+    <div class="header">
+        <h1>🕋 LIVE HAJJ ROUTE MAP</h1>
+        <p>Interactive Pilgrimage Journey | 8th – 12th Dhul-Hijjah | حج کا مکمل راستہ</p>
+    </div>
+    
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+    
+    <div class="distance-table">
+        <h3>📏 DISTANCES BETWEEN HOLY SITES</h3>
+        <div class="instructions">
+            💡 <strong>Interactive Map Tip:</strong> Zoom in/out, pan, and click on markers for details. The blue line shows the complete Hajj route.
+            <br>📍 <strong>Official distances from Saudi authorities:</strong>
+        </div>
+        <div class="table-grid">
+            <div class="distance-card makkah">
+                <span class="route">🕋 Makkah (Masjid Al-Haram) → 🏕️ Mina</span>
+                <span class="distance">~8 km</span>
+            </div>
+            <div class="distance-card mina">
+                <span class="route">🏕️ Mina → ⛰️ Arafat</span>
+                <span class="distance">~12 km</span>
+            </div>
+            <div class="distance-card arafat">
+                <span class="route">⛰️ Arafat → 🌙 Muzdalifah</span>
+                <span class="distance">~7 km</span>
+            </div>
+            <div class="distance-card muzdalifah">
+                <span class="route">🌙 Muzdalifah → 🏛️ Jamarat (Mina)</span>
+                <span class="distance">~5 km</span>
+            </div>
+            <div class="distance-card mina">
+                <span class="route">🏛️ Jamarat → 🕋 Makkah (Farewell)</span>
+                <span class="distance">~7 km</span>
+            </div>
+            <div class="distance-card makkah">
+                <span class="route">🕋 Total Journey (Round Trip)</span>
+                <span class="distance">~39 km</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="legend">
+        <span><div class="legend-color makkah"></div> Makkah Start/End</span>
+        <span><div class="legend-color mina"></div> Mina (Tents/Jamarat)</span>
+        <span><div class="legend-color arafat"></div> Arafat (Day 2)</span>
+        <span><div class="legend-color muzdalifah"></div> Muzdalifah (Night)</span>
+        <span>🔵 Blue Line = Pilgrimage Route</span>
+        <span>📍 Click markers for details</span>
+    </div>
+    
+    <div class="footer">
+        🗺️ Live Google Map | Official Hajj Route | Zoom & Pan to explore | All distances are approximate
+    </div>
+</div>
+
+<script>
+    // ============================================
+    // ⚠️ IMPORTANT: REPLACE 'YOUR_API_KEY_HERE' with your actual Google Maps API key
+    // Get your free key at: https://console.cloud.google.com
+    // Enable "Maps JavaScript API" then copy the key below
+    // ============================================
+    const API_KEY = 'YOUR_API_KEY_HERE';
+    
+    // Check if API key is configured
+    if (API_KEY === 'YOUR_API_KEY_HERE') {
+        document.getElementById('map').innerHTML = `
+            <div style="display: flex; justify-content: center; align-items: center; height: 550px; background: #fef9e6; flex-direction: column; gap: 15px; text-align: center; padding: 20px;">
+                <span style="font-size: 48px;">🗺️</span>
+                <h3 style="color: #2c3e2f;">Google Maps API Key Required</h3>
+                <p style="color: #5a4a2a; max-width: 400px;">Please get your free API key from <a href="https://console.cloud.google.com" target="_blank" style="color: #1a5f4a;">Google Cloud Console</a> (takes 2 minutes).<br>Then replace <strong>'YOUR_API_KEY_HERE'</strong> in the code.</p>
+                <p style="font-size: 12px; color: #8a6e2c;">💡 Step-by-step: Create Project → Enable Maps JavaScript API → Create Credentials → Copy API Key</p>
+            </div>
+        `;
+    } else {
+        // Load Google Maps
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+    }
+    
+    window.initMap = function() {
+        // Define all Hajj locations (accurate coordinates)
+        const locations = {
+            makkah: { lat: 21.4225, lng: 39.8262, name: "🕋 Masjid Al-Haram (Makkah)", desc: "Starting Point | Farewell Tawaf | Kabah" },
+            mina: { lat: 21.4133, lng: 39.8933, name: "🏕️ Mina (City of Tents)", desc: "Days 1-2 & 4-5 | Stay in tents | Rami at Jamarat" },
+            arafat: { lat: 21.3549, lng: 39.9845, name: "⛰️ Arafat (Mount of Mercy)", desc: "🔥 DAY 2 – Most Important Day | Standing prayer | Jabal ur Rahmah" },
+            muzdalifah: { lat: 21.3829, lng: 39.9372, name: "🌙 Muzdalifah", desc: "Night Stay | Collect pebbles for Rami" },
+            jamarat: { lat: 21.4211, lng: 39.8861, name: "🏛️ Jamarat Bridge (Stoning Pillars)", desc: "Rami at 3 Jamarat (Small, Medium, Large) | 7 stones each" }
+        };
+        
+        // Create map centered on Makkah
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: locations.makkah,
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.roadmap,
+            styles: [
+                { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
+                { featureType: "transit", elementType: "labels", stylers: [{ visibility: "off" }] }
+            ]
+        });
+        
+        // Define route points (in order of pilgrimage)
+        const routePoints = [
+            locations.makkah,
+            locations.mina,
+            locations.arafat,
+            locations.muzdalifah,
+            locations.jamarat,
+            locations.mina,
+            locations.makkah
+        ];
+        
+        // Create path coordinates for polyline
+        const routePath = routePoints.map(point => ({ lat: point.lat, lng: point.lng }));
+        
+        // Draw the pilgrimage route (blue line with arrows)
+        const routeLine = new google.maps.Polyline({
+            path: routePath,
+            geodesic: true,
+            strokeColor: "#2c7da0",
+            strokeOpacity: 0.9,
+            strokeWeight: 5,
+            icons: [{
+                icon: { path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW },
+                offset: "50%",
+                repeat: "100px"
+            }]
+        });
+        routeLine.setMap(map);
+        
+        // Add markers for each location
+        const markerIcons = {
+            makkah: "🕋",
+            mina: "🏕️",
+            arafat: "⛰️",
+            muzdalifah: "🌙",
+            jamarat: "🏛️"
+        };
+        
+        // Create markers with custom info windows
+        Object.entries(locations).forEach(([key, loc]) => {
+            const marker = new google.maps.Marker({
+                position: { lat: loc.lat, lng: loc.lng },
+                map: map,
+                title: loc.name,
+                animation: google.maps.Animation.DROP,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: key === 'makkah' ? "#d4a017" : 
+                               key === 'mina' ? "#52b788" :
+                               key === 'arafat' ? "#e63946" : "#4a306b",
+                    fillOpacity: 1,
+                    strokeWeight: 2,
+                    strokeColor: "white",
+                    scale: 8
+                }
+            });
+            
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<div style="padding: 8px; font-family: 'Segoe UI'; max-width: 200px;">
+                            <h4 style="margin: 0 0 6px; color: #1a5f4a;">${loc.name}</h4>
+                            <p style="margin: 0; font-size: 12px; color: #5a4a2a;">${loc.desc}</p>
+                          </div>`
+            });
+            
+            marker.addListener("click", () => {
+                infoWindow.open(map, marker);
+            });
+        });
+        
+        // Add distance labels on the map
+        const distanceLabels = [
+            { from: locations.makkah, to: locations.mina, text: "~8 km", offset: "30%" },
+            { from: locations.mina, to: locations.arafat, text: "~12 km", offset: "40%" },
+            { from: locations.arafat, to: locations.muzdalifah, text: "~7 km", offset: "50%" },
+            { from: locations.muzdalifah, to: locations.jamarat, text: "~5 km", offset: "50%" },
+            { from: locations.jamarat, to: locations.mina, text: "~2 km", offset: "50%" },
+            { from: locations.mina, to: locations.makkah, text: "~7 km", offset: "60%" }
+        ];
+        
+        // Fit bounds to show all locations
+        const bounds = new google.maps.LatLngBounds();
+        routePath.forEach(point => bounds.extend(point));
+        map.fitBounds(bounds);
+        
+        // Add a little extra padding
+        map.setCenter(bounds.getCenter());
+    };
+</script>
+</body>
+</html>
