@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Simplified Hajj Journey Map – Test Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .map-card {
+            max-width: 1000px;
+            width: 100%;
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #2c7da0, #61a5c2);
+            padding: 16px;
+            text-align: center;
+        }
+        .card-header h2 {
+            font-size: 22px;
+            color: white;
+        }
+        .card-header .sub {
+            font-size: 12px;
+            color: #e0f7fa;
+            margin-top: 4px;
+        }
+        .map-container {
+            padding: 20px;
+            background: #fff8e7;
+            text-align: center;
+        }
+        svg {
+            max-width: 100%;
+            height: auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            flex-wrap: wrap;
+            background: #fff8e7;
+            border-top: 1px solid #f0e0c0;
+            font-size: 11px;
+        }
+        .footer-note {
+            text-align: center;
+            padding: 12px;
+            font-size: 10px;
+            color: #8a6e2c;
+            background: #fff8e7;
+            border-top: 1px solid #f0e0c0;
+        }
+        @media (max-width: 600px) {
+            .card-header h2 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+<div class="map-card">
+    <div class="card-header">
+        <h2>🕋 HAJJ JOURNEY MAP | حج کا نقشہ</h2>
+        <div class="sub">8th – 12th Dhul-Hijjah • Complete Pilgrimage Route (Test Version)</div>
+    </div>
+    
+    <div class="map-container">
+        <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+            
+            <rect width="900" height="600" fill="#ffffff" rx="16"/>
+            
+            <!-- SECTION 1: FORWARD JOURNEY (8th-10th) - GOLD -->
+            <rect x="280" y="15" width="340" height="26" rx="13" fill="#c9a03d"/>
+            <text x="450" y="32" font-size="11" fill="white" font-weight="bold" text-anchor="middle">📅 8th – 10th Dhul-Hijjah (Forward Journey)</text>
+            
+            <!-- Makkah -->
+            <rect x="70" y="80" width="40" height="40" rx="6" fill="#c9a03d" stroke="#b8860b" stroke-width="2"/>
+            <text x="90" y="105" font-size="24" text-anchor="middle" fill="white">🕋</text>
+            <text x="90" y="135" font-size="11" fill="#2c3e2f" text-anchor="middle" font-weight="bold">MAKKAH</text>
+            <text x="90" y="148" font-size="8" fill="#8a6e2c" text-anchor="middle">Start</text>
+            
+            <!-- Path Makkah to Jamarat -->
+            <line x1="110" y1="100" x2="280" y2="100" stroke="#c9a03d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="285,100 275,95 275,105" fill="#c9a03d"/>
+            <circle cx="120" cy="100" r="4" fill="#c9a03d"/>
+            <rect x="175" y="90" width="45" height="18" rx="9" fill="#c9a03d" opacity="0.15"/>
+            <text x="197" y="103" font-size="10" fill="#c9a03d" font-weight="bold" text-anchor="middle">4 km</text>
+            
+            <!-- Jamarat -->
+            <g transform="translate(300, 95)">
+                <rect x="-8" y="-12" width="16" height="24" rx="4" fill="#d4a373" stroke="#b97d44" stroke-width="1.5"/>
+                <text x="0" y="20" font-size="9" fill="#8a6e2c" text-anchor="middle" font-weight="bold">Jamarat</text>
+                <text x="0" y="30" font-size="7" fill="#8a6e2c" text-anchor="middle">(Pass)</text>
+            </g>
+            
+            <!-- Path Jamarat to Mina -->
+            <line x1="320" y1="100" x2="430" y2="100" stroke="#c9a03d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="435,100 425,95 425,105" fill="#c9a03d"/>
+            <circle cx="330" cy="100" r="4" fill="#c9a03d"/>
+            <rect x="360" y="90" width="45" height="18" rx="9" fill="#c9a03d" opacity="0.15"/>
+            <text x="382" y="103" font-size="10" fill="#c9a03d" font-weight="bold" text-anchor="middle">9 km</text>
+            
+            <!-- Mina -->
+            <g transform="translate(460, 95)">
+                <polygon points="-15,10 0,-15 15,10" fill="#52b788" stroke="#2d6a4f" stroke-width="1.5"/>
+                <rect x="-6" y="-2" width="12" height="12" fill="#2d6a4f"/>
+                <text x="0" y="20" font-size="10" fill="#2c3e2f" text-anchor="middle" font-weight="bold">MINA</text>
+                <text x="0" y="32" font-size="7" fill="#8a6e2c" text-anchor="middle">Day 1-2</text>
+            </g>
+            
+            <!-- Path Mina to Muzdalifah -->
+            <line x1="475" y1="100" x2="580" y2="100" stroke="#c9a03d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="585,100 575,95 575,105" fill="#c9a03d"/>
+            <circle cx="485" cy="100" r="4" fill="#c9a03d"/>
+            <rect x="515" y="90" width="45" height="18" rx="9" fill="#c9a03d" opacity="0.15"/>
+            <text x="537" y="103" font-size="10" fill="#c9a03d" font-weight="bold" text-anchor="middle">4 km</text>
+            
+            <!-- Muzdalifah -->
+            <g transform="translate(610, 95)">
+                <circle cx="0" cy="0" r="12" fill="#4a306b"/>
+                <circle cx="4" cy="-4" r="7" fill="#ffffff"/>
+                <text x="0" y="5" font-size="12" fill="white" text-anchor="middle">🌙</text>
+                <text x="0" y="20" font-size="8" fill="#4a306b" text-anchor="middle" font-weight="bold">Muzdalifah</text>
+                <text x="0" y="30" font-size="7" fill="#8a6e2c" text-anchor="middle">(pass)</text>
+            </g>
+            
+            <!-- Path Muzdalifah to Arafah -->
+            <line x1="622" y1="100" x2="760" y2="100" stroke="#c9a03d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="765,100 755,95 755,105" fill="#c9a03d"/>
+            <circle cx="630" cy="100" r="4" fill="#c9a03d"/>
+            <rect x="680" y="90" width="45" height="18" rx="9" fill="#c9a03d" opacity="0.15"/>
+            <text x="702" y="103" font-size="10" fill="#c9a03d" font-weight="bold" text-anchor="middle">9 km</text>
+            
+            <!-- Arafah -->
+            <g transform="translate(800, 90)">
+                <polygon points="-18,12 0,-18 18,12" fill="#e63946" stroke="#b71c1c" stroke-width="1.5"/>
+                <polygon points="-7,3 0,-9 7,3" fill="#ffffff" opacity="0.4"/>
+                <text x="0" y="22" font-size="10" fill="#2c3e2f" text-anchor="middle" font-weight="bold">ARAFAH</text>
+                <text x="0" y="34" font-size="8" fill="#e63946" text-anchor="middle">Day 2 🔥</text>
+            </g>
+            
+            <!-- DIVIDER -->
+            <line x1="50" y1="180" x2="850" y2="180" stroke="#e8c468" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.5"/>
+            
+            <!-- SECTION 2: RETURN JOURNEY (10th-12th) - PURPLE -->
+            <rect x="280" y="195" width="340" height="26" rx="13" fill="#b5838d"/>
+            <text x="450" y="212" font-size="11" fill="white" font-weight="bold" text-anchor="middle">📅 10th – 12th Dhul-Hijjah (Return Journey)</text>
+            
+            <!-- Return Path: Arafah to Muzdalifah -->
+            <line x1="780" y1="280" x2="640" y2="280" stroke="#b5838d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="635,280 645,275 645,285" fill="#b5838d"/>
+            <circle cx="770" cy="280" r="4" fill="#b5838d"/>
+            <rect x="700" y="270" width="45" height="18" rx="9" fill="#b5838d" opacity="0.15"/>
+            <text x="722" y="283" font-size="10" fill="#b5838d" font-weight="bold" text-anchor="middle">9 km</text>
+            
+            <!-- Muzdalifah Night Stay -->
+            <g transform="translate(610, 290)">
+                <circle cx="0" cy="0" r="18" fill="#4a306b"/>
+                <circle cx="6" cy="-6" r="10" fill="#ffffff"/>
+                <text x="0" y="6" font-size="16" fill="white" text-anchor="middle">🌙</text>
+                <text x="0" y="28" font-size="10" fill="#2c3e2f" text-anchor="middle" font-weight="bold">MUZDALIFAH</text>
+                <text x="0" y="40" font-size="8" fill="#8a6e2c" text-anchor="middle">Night Stay</text>
+            </g>
+            
+            <!-- Path Muzdalifah to Jamarat -->
+            <line x1="590" y1="295" x2="430" y2="295" stroke="#b5838d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="425,295 435,290 435,300" fill="#b5838d"/>
+            <circle cx="580" cy="295" r="4" fill="#b5838d"/>
+            <rect x="500" y="285" width="45" height="18" rx="9" fill="#b5838d" opacity="0.15"/>
+            <text x="522" y="298" font-size="10" fill="#b5838d" font-weight="bold" text-anchor="middle">13 km</text>
+            
+            <!-- Rami at Jamarat -->
+            <g transform="translate(390, 300)">
+                <rect x="-10" y="-14" width="20" height="28" rx="4" fill="#d4a373" stroke="#b97d44" stroke-width="1.5"/>
+                <text x="0" y="22" font-size="9" fill="#8a6e2c" text-anchor="middle" font-weight="bold">Rami</text>
+                <text x="0" y="34" font-size="7" fill="#8a6e2c" text-anchor="middle">(7 stones)</text>
+            </g>
+            
+            <text x="390" y="345" font-size="7" fill="#8a6e2c" text-anchor="middle">Small █ Medium █ Large</text>
+            
+            <!-- Path Jamarat to Mina -->
+            <line x1="370" y1="305" x2="470" y2="305" stroke="#b5838d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="475,305 465,300 465,310" fill="#b5838d"/>
+            <rect x="410" y="315" width="40" height="18" rx="9" fill="#b5838d" opacity="0.15"/>
+            <text x="430" y="328" font-size="10" fill="#b5838d" font-weight="bold" text-anchor="middle">3 km</text>
+            
+            <!-- Mina Return -->
+            <g transform="translate(500, 305)">
+                <polygon points="-15,10 0,-15 15,10" fill="#52b788" stroke="#2d6a4f" stroke-width="1.5"/>
+                <rect x="-6" y="-2" width="12" height="12" fill="#2d6a4f"/>
+                <text x="0" y="20" font-size="10" fill="#2c3e2f" text-anchor="middle" font-weight="bold">MINA</text>
+                <text x="0" y="32" font-size="7" fill="#8a6e2c" text-anchor="middle">Day 3-5</text>
+            </g>
+            
+            <!-- Path Mina to Makkah -->
+            <line x1="515" y1="310" x2="110" y2="310" stroke="#b5838d" stroke-width="4" stroke-dasharray="8,4"/>
+            <polygon points="105,310 115,305 115,315" fill="#b5838d"/>
+            <circle cx="500" cy="310" r="4" fill="#b5838d"/>
+            <rect x="280" y="320" width="45" height="18" rx="9" fill="#b5838d" opacity="0.15"/>
+            <text x="302" y="333" font-size="10" fill="#b5838d" font-weight="bold" text-anchor="middle">4 km</text>
+            
+            <!-- Makkah Farewell -->
+            <g transform="translate(80, 320)">
+                <rect x="-25" y="-25" width="50" height="50" rx="6" fill="#c9a03d" stroke="#b8860b" stroke-width="2" opacity="0.7"/>
+                <text x="0" y="-2" font-size="28" text-anchor="middle" fill="white" opacity="0.7">🕋</text>
+                <text x="0" y="35" font-size="10" fill="#9b59b6" text-anchor="middle" font-weight="bold">Farewell</text>
+                <text x="0" y="47" font-size="8" fill="#9b59b6" text-anchor="middle">Tawaf</text>
+            </g>
+            
+            <!-- Compass -->
+            <g transform="translate(850, 540)">
+                <circle cx="0" cy="0" r="22" fill="none" stroke="#8a6e2c" stroke-width="1.5"/>
+                <polygon points="0,-15 3,-4 0,-6 -3,-4" fill="#c9a03d"/>
+                <polygon points="0,15 3,4 0,6 -3,4" fill="#8a6e2c"/>
+                <text x="0" y="-20" font-size="10" fill="#2c3e2f" text-anchor="middle" font-weight="bold">N</text>
+            </g>
+            
+            <!-- Summary Box -->
+            <rect x="50" y="540" width="750" height="45" rx="10" fill="#fef9e6" stroke="#e8c468" stroke-width="1"/>
+            <text x="425" y="558" font-size="9" fill="#5a4a2a" text-anchor="middle" font-weight="bold">📅 8th-10th: Makkah → Jamarat (4km) → Mina (9km) → Muzdalifah (4km) → Arafah (9km)</text>
+            <text x="425" y="574" font-size="9" fill="#5a4a2a" text-anchor="middle" font-weight="bold">📅 10th-12th: Arafah → Muzdalifah (9km) → Rami (13km) → Mina (3km) → Makkah (4km) → Farewell</text>
+            
+        </svg>
+    </div>
+    
+    <div class="legend">
+        <span>🟡 8th-10th Dhul-Hijjah (Gold)</span>
+        <span>🟣 10th-12th Dhul-Hijjah (Purple)</span>
+        <span>🕋 Makkah</span>
+        <span>🏕️ Mina</span>
+        <span>🏛️ Jamarat</span>
+        <span>⛰️ Arafah</span>
+        <span>🌙 Muzdalifah</span>
+        <span>● = Start of path segment</span>
+        <span>► = Direction arrow</span>
+    </div>
+    
+    <div class="footer-note">
+        🗺️ Simplified Hajj Map – Test Version | Your original arrows-adjusted-map.html remains unchanged
+    </div>
+</div>
+</body>
+</html>
