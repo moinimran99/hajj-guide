@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Hajj Journey - Arrows Adjusted | Fixed Curves</title>
+    <title>Hajj Map - 8th, 9th & 10th Dhul-Hijjah</title>
     <style>
         * {
             margin: 0;
@@ -29,17 +29,18 @@
         }
         .card-header {
             background: linear-gradient(135deg, #2c7da0, #61a5c2);
-            padding: 16px;
+            padding: 20px;
             text-align: center;
         }
         .card-header h2 {
-            font-size: 22px;
+            font-size: 24px;
             color: white;
+            letter-spacing: 1px;
         }
         .card-header .sub {
-            font-size: 12px;
+            font-size: 13px;
             color: #e0f7fa;
-            margin-top: 4px;
+            margin-top: 6px;
         }
         .map-container {
             padding: 20px;
@@ -76,8 +77,8 @@
 <body>
 <div class="map-card">
     <div class="card-header">
-        <h2>🕋 HAJJ JOURNEY MAP | حج کا نقشہ</h2>
-        <div class="sub">Split Level View • Forward (Upper) / Return (Lower) • Makkah to Arafah</div>
+        <h2>🕋 HAJJ MAP | 8TH, 9TH & 10TH DHUL-HIJJAH</h2>
+        <div class="sub">حج کا نقشہ | ۸، ۹ اور ۱۰ ذوالحجہ | Complete Pilgrimage Route</div>
     </div>
     
     <div class="map-container">
@@ -95,10 +96,7 @@
             <!-- UPPER HALF (FORWARD JOURNEY) -->
             <!-- ============================================ -->
             
-            <rect x="310" y="45" width="280" height="28" rx="14" fill="#2c7da0" opacity="0.9"/>
-            <text x="450" y="64" font-size="13" fill="white" font-weight="bold" text-anchor="middle">🌅 FORWARD JOURNEY (8th-9th Dhul-Hijjah)</text>
-            
-            <!-- CURVED PATH: Makkah → Jamarat → Mina (preserved) -->
+            <!-- CURVED PATH: Makkah → Jamarat → Mina -->
             <path d="M 120 490 C 100 280, 200 180, 330 210 C 380 220, 420 210, 480 200" stroke="#e68a2e" stroke-width="6" fill="none" stroke-linecap="round"/>
             
             <!-- Distance 1 -->
@@ -118,7 +116,7 @@
             <text x="330" y="256" font-size="9" fill="#8a6e2c" font-weight="bold" text-anchor="middle">Jamarat</text>
             <text x="330" y="268" font-size="8" fill="#8a6e2c" text-anchor="middle">(Pass by)</text>
             
-            <!-- CURVED PATH: Mina → Muzdalifah → Arafah (preserved) -->
+            <!-- CURVED PATH: Mina → Muzdalifah → Arafah -->
             <path d="M 480 200 C 560 220, 610 210, 660 190 C 700 175, 750 160, 790 150" stroke="#e68a2e" stroke-width="6" fill="none" stroke-linecap="round"/>
             
             <!-- Distance 3 -->
@@ -143,10 +141,7 @@
             <!-- LOWER HALF (RETURN JOURNEY) -->
             <!-- ============================================ -->
             
-            <rect x="300" y="690" width="300" height="28" rx="14" fill="#b5838d" opacity="0.9"/>
-            <text x="450" y="709" font-size="13" fill="white" font-weight="bold" text-anchor="middle">🔄 RETURN JOURNEY (10th-12th Dhul-Hijjah)</text>
-            
-            <!-- CURVED PATH: Arafah → Muzdalifah (preserved) -->
+            <!-- CURVED PATH: Arafah → Muzdalifah -->
             <path d="M 790 150 C 750 200, 720 310, 650 400 C 620 435, 580 460, 520 470" stroke="#9b59b6" stroke-width="6" fill="none" stroke-linecap="round"/>
             
             <!-- Distance 5 -->
@@ -162,7 +157,7 @@
             <!-- Arrow -->
             <text x="650" y="370" font-size="18" fill="#9b59b6">↙</text>
             
-            <!-- CURVED PATH: Muzdalifah → Jamarat → Mina (preserved) -->
+            <!-- CURVED PATH: Muzdalifah → Jamarat → Mina -->
             <path d="M 520 470 C 460 485, 400 470, 360 455 C 330 445, 310 435, 290 430" stroke="#9b59b6" stroke-width="6" fill="none" stroke-linecap="round"/>
             
             <!-- Distance 6 -->
@@ -179,7 +174,7 @@
             <text x="360" y="500" font-size="9" fill="#8a6e2c" font-weight="bold" text-anchor="middle">2. Confirm sacrifice / Qurbani</text>
             <text x="360" y="512" font-size="9" fill="#8a6e2c" font-weight="bold" text-anchor="middle">3. Once confirmed, Shave / Cut hair</text>
             
-            <!-- CURVED PATH: Mina → Makkah (preserved, terminates exactly at Makkah) -->
+            <!-- CURVED PATH: Mina → Makkah -->
             <path d="M 290 430 C 240 420, 180 460, 140 500 C 125 518, 118 528, 115 535" stroke="#9b59b6" stroke-width="6" fill="none" stroke-linecap="round"/>
             
             <!-- Distance 7 -->
@@ -220,12 +215,6 @@
             <text x="850" y="695" font-size="12" fill="#8a6e2c" font-weight="bold" text-anchor="middle">N</text>
             <text x="850" y="710" font-size="10" fill="#8a6e2c" text-anchor="middle">↑</text>
             
-            <!-- Summary Box -->
-            <rect x="40" y="690" width="250" height="65" rx="12" fill="#f5f0e0" stroke="#e8c468" stroke-width="1"/>
-            <text x="165" y="710" font-size="9" fill="#5a3e1b" text-anchor="middle" font-weight="bold">📏 Total Forward: 26 km</text>
-            <text x="165" y="725" font-size="9" fill="#5a3e1b" text-anchor="middle" font-weight="bold">📏 Total Return: 26 km</text>
-            <text x="165" y="740" font-size="8" fill="#8a6e2c" text-anchor="middle">🕋 5-Day Complete Journey</text>
-            
         </svg>
     </div>
     
@@ -238,12 +227,14 @@
         <span>🏛️ Jamarat</span>
         <span style="color:#e68a2e;">━━━━</span> Forward Path
         <span style="color:#9b59b6;">━━━━</span> Return Path
+        <span>● Start marker</span>
+        <span>→ Direction arrow</span>
     </div>
     
     <div class="footer-note">
-        📍 FORWARD: Makkah → Jamarat (4km) → Mina (9km) → Muzdalifah (4km) → Arafah (9km)<br>
-        📍 RETURN: Arafah → Muzdalifah (9km) → Jamarat (13km) → Mina (3km) → Makkah (4km)<br>
-        🗺️ All curved paths preserved | Direction arrows and start markers intact
+        📍 Makkah → Jamarat (4km) → Mina (9km) → Muzdalifah (4km) → Arafah (9km)<br>
+        📍 Arafah → Muzdalifah (9km) → Jamarat (13km) → Mina (3km) → Makkah (4km)<br>
+        🗺️ Complete Hajj route for 8th, 9th & 10th Dhul-Hijjah | All curved paths preserved
     </div>
 </div>
 </body>
