@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hajj Journey - Final Complete Map | All Issues Fixed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .map-card {
+            max-width: 1000px;
+            width: 100%;
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #2c7da0, #61a5c2);
+            padding: 16px 16px;
+            text-align: center;
+        }
+        .card-header h2 {
+            font-size: 22px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .card-header .sub {
+            font-size: 12px;
+            color: #e0f7fa;
+            margin-top: 4px;
+        }
+        
+        .svg-container {
+            padding: 20px;
+            background: #fff8e7;
+            overflow-x: auto;
+        }
+        
+        svg {
+            width: 100%;
+            height: auto;
+            background: #fef9e6;
+            border-radius: 24px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .location-label {
+            font-size: 13px;
+            font-weight: bold;
+            fill: #2c3e2f;
+        }
+        .location-day {
+            font-size: 10px;
+            fill: #8a6e2c;
+        }
+        .distance-text {
+            font-size: 9px;
+            font-weight: bold;
+            fill: #c9a03d;
+        }
+        .distance-return {
+            fill: #9b59b6;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 15px 20px;
+            border-top: 1px solid #f0e0c0;
+            flex-wrap: wrap;
+            background: #fff8e7;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: #5a3e1b;
+        }
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+        .legend-dot.makkah { background: #c9a03d; }
+        .legend-dot.mina { background: #52b788; }
+        .legend-dot.arafah { background: #e63946; }
+        .legend-dot.muzdalifah { background: #4a306b; }
+        
+        .footer-note {
+            text-align: center;
+            padding: 12px;
+            font-size: 10px;
+            color: #8a6e2c;
+            background: #fff8e7;
+            border-top: 1px solid #f0e0c0;
+        }
+    </style>
+</head>
+<body>
+<div class="map-card">
+    <div class="card-header">
+        <h2>🕋 HAJJ JOURNEY MAP | حج کا نقشہ</h2>
+        <div class="sub">Split Level View • Forward (Upper) / Return (Lower) • Makkah to Arafah</div>
+    </div>
+    
+    <div class="svg-container">
+        <svg viewBox="0 0 900 780" xmlns="http://www.w3.org/2000/svg">
+            
+            <rect width="900" height="780" fill="#fef9e6" rx="20"/>
+            
+            <!-- ============================================ -->
+            <!-- DIVIDER LINE -->
+            <!-- ============================================ -->
+            <line x1="50" y1="380" x2="850" y2="380" stroke="#e8c468" stroke-width="2" stroke-dasharray="10,6" opacity="0.5"/>
+            
+            <!-- ============================================ -->
+            <!-- UPPER HALF (FORWARD JOURNEY) -->
+            <!-- ============================================ -->
+            
+            <rect x="310" y="45" width="280" height="28" rx="14" fill="#2c7da0" opacity="0.9"/>
+            <text x="450" y="64" font-size="13" fill="white" font-weight="bold" text-anchor="middle">🌅 FORWARD JOURNEY (8th-9th Dhul-Hijjah)</text>
+            
+            <!-- Path: Makkah → Jamarat → Mina -->
+            <path d="M 120 490 
+                     C 100 280, 200 180, 330 210 
+                     C 380 220, 420 210, 480 200" 
+                  stroke="#e68a2e" stroke-width="6" fill="none" 
+                  stroke-linecap="round"/>
+            
+            <!-- Leg 1: Makkah → Jamarat Distance (4 km) - moved ABOVE the path line -->
+            <rect x="195" y="195" width="50" height="18" rx="9" fill="white" opacity="0.95"/>
+            <text x="220" y="208" class="distance-text" fill="#e68a2e" text-anchor="middle">4 km</text>
+            
+            <!-- Single arrow toward Jamarat -->
+            <text x="260" y="240" font-size="18" fill="#e68a2e">→</text>
+            
+            <!-- Leg 2: Jamarat → Mina Distance (9 km) -->
+            <rect x="365" y="228" width="50" height="18" rx="9" fill="white" opacity="0.95"/>
+            <text x="390" y="241" class="distance-text" fill="#e68a2e" text-anchor="middle">9 km</text>
+            
+            <!-- Jamarat marker (below path) -->
+            <circle cx="330" cy="230" r="16" fill="#d4a373" stroke="white" stroke-width="2"/>
+            <text x="330" y="235" font-size="18" text-anchor="middle" fill="white">🏛️</text>
+            <text x="330" y="256" font-size="9" text-anchor="middle" fill="#8a6e2c" font-weight="bold">Jamarat</text>
+            <text x="330" y="268" font-size="8" text-anchor="middle" fill="#8a6e2c">(Pass by)</text>
+            
+            <!-- Path: Mina → Muzdalifah → Arafah -->
+            <path d="M 480 200 
+                     C 560 220, 610 210, 660 190 
+                     C 700 175, 750 160, 790 150" 
+                  stroke="#e68a2e" stroke-width="6" fill="none" 
+                  stroke-linecap="round"/>
+            
+            <!-- Leg 3: Mina → Muzdalifah Distance (4 km) -->
+            <rect x="530" y="218" width="50" height="18" rx="9" fill="white" opacity="0.95"/>
+            <text x="555" y="231" class="distance-text" fill="#e68a2e" text-anchor="middle">4 km</text>
+            
+            <!-- Leg 4: Muzdalifah → Arafah Distance (9 km) - positioned off the path -->
+            <rect x="680" y="145" width="50" height="18" rx="9" fill="white" opacity="0.95"/>
+            <text x="705" y="158" class="distance-text" fill="#e68a2e" text-anchor="middle">9 km</text>
+            
+            <!-- Arrow for last leg - positioned away from distance -->
+            <text x="745" y="170" font-size="18" fill="#e68a2e">→</text>
+            
+            <!-- Muzdalifah marker (below path) -->
+            <circle cx="610" cy="220" r="10" fill="#4a306b" stroke="white" stroke-width="2"/>
+            <text x="610" y="224" font-size="12" text-anchor="middle" fill="white">🌙</text>
+            <text x="610" y="240" font-size="8" text-anchor="middle" fill="#4a306b">Muzdalifah</text>
+            <text x="610" y="252" font-size="7" text-anchor="middle" fill="#8a6e2c">(pass by)</text>
+            
+            
+            <!-- ============================================ -->
+            <!-- LOWER HALF (RETURN JOURNEY) -->
+            <!-- ============================================ -->
+            
+            <rect x="300" y="690" width="300" height="28" rx="14" fill="#b5838d" opacity="0.9"/>
+            <text x="450" y="709" font-size="13" fill="white" font-weight="bold" text-anchor="middle">🔄 RETURN JOURNEY (10th-12th Dhul-Hijjah)</text>
+            
+            <!-- Path: Arafah → Muzdalifah Night -->
+            <path d="M 790 150 
+                     C 750 200, 720 310, 650 400 
+                     C 620 435, 580 460, 520 470" 
+                  stroke="#9b59b6" stroke-width="6" fill="none" 
+                  stroke-linecap="round"/>
+            
+            <!-- Leg 1: Arafah → Muzdalifah Distance (9 km) - moved ABOVE the path line -->
+            <rect x="690" y="265" width="50" height="18" rx="9" fill="white" opacity="0.95"/>
+            <text x="715" y="278" class="distance-text distance-return" fill="#9b59b6" text-anchor="middle">9 km</text>
+            
+            <!-- Arrow pointing toward Muzdalifah -->
+            <text x="650" y="340" font-size="18" fill="#9b59b6">↙</text>
+            
+            <!-- Muzdalifah Night Stay (large marker) -->
+            <circle cx="620" cy="420" r="25" fill="#4a306b" stroke="white" stroke-width="3"/>
+            <text x="620" y="428" font-size="28" text-anchor="middle" fill="white">🌙</text>
+            <text x="620" y="460" font-size="11" text-anchor="middle" fill="#4a306b" font-weight="bold">MUZDALIFAH</text>
+            <text x="620" y="474" font-size="9" text-anchor="middle" fill="#8a6e2c">Night Stay</text>
+            
+            <!-- Path: Muzdalifah → Jamarat → Mina -->
+            <path d="M 520 470 
+                     C 460 485, 400 470, 360 455
+                     C 330 445, 310 435, 290 430" 
+                  stroke="#9b59b6" stroke-width="6" fill="none" 
+                  stroke-linecap="round"/>
+            
+            <!-- Leg 2: Muzdalifah → Jamarat Distance (13 km) -->
+            <rect x="425" y="485" width="60" height="18" rx="9" fill="white" opacity="0.95"/>
+            <text x="455" y="498" class="distance-text distance-return" fill="#9b59b6" text-anchor="middle">13 km</text>
+            
+            <!-- Arrow moved ABOVE the path line (no overlap) -->
+            <text x="470" y="478" font-size="18" fill="#9b59b6">←</text>
+            
+            <!-- Rami at Jamarat al-Aqaba with THREE Hajj rituals in order - ALL BOLD for consistency -->
+            <circle cx="360" cy="455" r="20" fill="#d4a373" stroke="white" stroke-width="3"/>
+            <text x="360" y="461" font-size="22" text-anchor="middle" fill="white">🏛️</text>
+            
+            <!-- All three lines in BOLD (consistent) -->
+            <text x="360" y="488" font-size="9" text-anchor="middle" fill="#8a6e2c" font-weight="bold">1. Rami at Jamarat al-Aqaba (7 stones)</text>
+            <text x="360" y="500" font-size="9" text-anchor="middle" fill="#8a6e2c" font-weight="bold">2. Confirm sacrifice / Qurbani</text>
+            <text x="360" y="512" font-size="9" text-anchor="middle" fill="#8a6e2c" font-weight="bold">3. Once confirmed, Shave / Cut hair</text>
+            
+            <!-- Path: Mina → Makkah (terminates exactly at Makkah icon) -->
+            <path d="M 290 430 
+                     C 240 420, 180 460, 140 500
+                     C 125 518, 118 528, 115 535" 
+                  stroke="#9b59b6" stroke-width="6" fill="none" 
+                  stroke-linecap="round"/>
+            
+            <!-- Leg 3: Jamarat → Makkah Distance (4 km) -->
+            <rect x="195" y="480" width="50" height="18" rx="9" fill="white" opacity="0.95"/>
+            <text x="220" y="493" class="distance-text distance-return" fill="#9b59b6" text-anchor="middle">4 km</text>
+            
+            <!-- Arrow pointing toward Makkah -->
+            <text x="240" y="470" font-size="18" fill="#9b59b6">↙</text>
+            
+            
+            <!-- ============================================ -->
+            <!-- LOCATION MARKERS -->
+            <!-- ============================================ -->
+            
+            <!-- MAKKAH (Start & End - path terminates exactly here) -->
+            <circle cx="120" cy="505" r="35" fill="#c9a03d" stroke="white" stroke-width="4"/>
+            <text x="120" y="513" font-size="38" text-anchor="middle" fill="white">🕋</text>
+            <text x="120" y="555" class="location-label" text-anchor="middle" fill="#2c3e2f">MAKKAH</text>
+            <text x="120" y="569" class="location-day" text-anchor="middle">Start Point</text>
+            <text x="120" y="583" class="location-day" text-anchor="middle" fill="#9b59b6" font-weight="bold">Farewell Tawaf</text>
+            
+            <!-- MINA -->
+            <polygon points="480,175 515,215 445,215" fill="#52b788" stroke="white" stroke-width="3"/>
+            <text x="480" y="200" font-size="32" text-anchor="middle" fill="white">🏕️</text>
+            <text x="480" y="230" class="location-label" text-anchor="middle" fill="#2c3e2f">MINA</text>
+            <text x="480" y="244" class="location-day" text-anchor="middle">Day 1-2 Stay</text>
+            <text x="480" y="425" class="location-day" text-anchor="middle" fill="#9b59b6" font-weight="bold">↑ Return (Day 3-5)</text>
+            
+            <!-- ARAFAH -->
+            <rect x="770" y="125" width="55" height="55" rx="10" fill="#e63946" stroke="white" stroke-width="4"/>
+            <text x="797" y="165" font-size="36" text-anchor="middle" fill="white">⛰️</text>
+            <text x="797" y="198" class="location-label" text-anchor="middle" fill="#2c3e2f">ARAFAH</text>
+            <text x="797" y="212" class="location-day" text-anchor="middle">🔥 Day 2</text>
+            <text x="797" y="226" class="location-day" text-anchor="middle" fill="#e63946" font-weight="bold">MOST IMPORTANT</text>
+            <text x="797" y="265" class="location-day" text-anchor="middle" fill="#9b59b6">Leaving after sunset</text>
+            
+            <!-- Compass -->
+            <circle cx="850" cy="700" r="25" fill="#fff" stroke="#8a6e2c" stroke-width="2"/>
+            <text x="850" y="695" font-size="12" text-anchor="middle" fill="#8a6e2c" font-weight="bold">N</text>
+            <text x="850" y="710" font-size="10" text-anchor="middle" fill="#8a6e2c">↑</text>
+            
+            <!-- Summary Box -->
+            <rect x="40" y="690" width="250" height="65" rx="12" fill="#f5f0e0" stroke="#e8c468" stroke-width="1"/>
+            <text x="165" y="710" font-size="9" fill="#5a3e1b" text-anchor="middle">📏 Total Forward: 4+9+4+9 = 26 km</text>
+            <text x="165" y="725" font-size="9" fill="#5a3e1b" text-anchor="middle">📏 Total Return: 9+13+4 = 26 km</text>
+            <text x="165" y="740" font-size="8" fill="#8a6e2c" text-anchor="middle">🕋 5-Day Complete Journey</text>
+            
+        </svg>
+    </div>
+    
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot makkah"></div> Makkah (🕋) Start / End</div>
+        <div class="legend-item"><div class="legend-dot mina"></div> Mina (🏕️) Tents Area</div>
+        <div class="legend-item"><div class="legend-dot arafah"></div> Arafah (⛰️) Most Important</div>
+        <div class="legend-item"><div class="legend-dot muzdalifah"></div> Muzdalifah (🌙) Night Stay</div>
+        <div class="legend-item"><span>🏛️</span> Jamarat (Pass by / Rami)</div>
+        <div class="legend-item"><span style="color:#e68a2e;">━━━━</span> Forward Path (Upper)</div>
+        <div class="legend-item"><span style="color:#9b59b6;">━━━━</span> Return Path (Lower)</div>
+        <div class="legend-item"><span>📏</span> Detailed leg distances shown</div>
+    </div>
+    
+    <div class="footer-note">
+        📍 FORWARD: Makkah → Jamarat (4km) → Mina (9km) → Muzdalifah (4km) → Arafah (9km)<br>
+        📍 RETURN: Arafah → Muzdalifah (9km) → Jamarat (13km) → Makkah (4km)<br>
+        🗺️ Return path terminates exactly at Makkah icon | Three Hajj rituals shown at Jamarat (all bold) | No overlapping elements
+    </div>
+</div>
+</body>
+</html>
