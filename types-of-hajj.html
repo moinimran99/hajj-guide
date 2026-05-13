@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Types of Hajj | حج کی اقسام</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0b3d2e, #1a6d4e);
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        /* Main Card */
+        .types-card {
+            background: #fef9e6;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+        }
+        /* Header */
+        .card-header {
+            background: linear-gradient(135deg, #2c7da0, #61a5c2);
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .card-header h1 {
+            font-size: 28px;
+            color: white;
+            letter-spacing: 1px;
+        }
+        .card-header .sub {
+            font-size: 14px;
+            color: #e0f7fa;
+            margin-top: 8px;
+        }
+        .card-header .arabic {
+            font-family: 'Scheherazade', 'Amiri', serif;
+            font-size: 22px;
+            direction: rtl;
+            color: #ffecb3;
+            margin-top: 8px;
+        }
+        /* Introduction Section */
+        .intro-section {
+            padding: 20px 24px 0 24px;
+        }
+        .intro-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #2c3e2f;
+            margin-bottom: 20px;
+        }
+        .intro-text.urdu {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            font-size: 18px;
+            direction: rtl;
+            color: #5a3e1b;
+            line-height: 1.7;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f0e0c0;
+        }
+        /* Types Grid */
+        .types-grid {
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        /* Type Card (Clickable) */
+        .type-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 6px solid;
+        }
+        .type-item.tamattu { border-left-color: #2c7da0; }
+        .type-item.qiran { border-left-color: #52b788; }
+        .type-item.ifrad { border-left-color: #e63946; }
+        
+        .type-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        /* Type Header (Always Visible) */
+        .type-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: #ffffff;
+            flex-wrap: wrap;
+        }
+        .type-title {
+            display: flex;
+            flex-direction: column;
+        }
+        .type-name-en {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e2f;
+        }
+        .type-name-ar {
+            font-family: 'Scheherazade', 'Amiri', serif;
+            font-size: 16px;
+            direction: rtl;
+            color: #8a6e2c;
+            margin-top: 4px;
+        }
+        .type-name-ur {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 16px;
+            direction: rtl;
+            color: #5a3e1b;
+            margin-top: 4px;
+        }
+        .toggle-icon {
+            font-size: 24px;
+            color: #c9a03d;
+            transition: transform 0.3s ease;
+        }
+        /* Type Details (Expandable) */
+        .type-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #fefcf5;
+            border-top: 1px solid #f0e0c0;
+        }
+        .type-details.open {
+            max-height: 800px;
+        }
+        .details-content {
+            padding: 20px;
+        }
+        .english-details {
+            margin-bottom: 20px;
+        }
+        .english-details p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #2c3e2f;
+            margin-bottom: 12px;
+        }
+        .urdu-details {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            direction: rtl;
+            border-top: 1px solid #f0e0c0;
+            padding-top: 16px;
+        }
+        .urdu-details p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5a3e1b;
+            margin-bottom: 12px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #c9a03d;
+        }
+        /* Summary Section */
+        .summary-section {
+            margin: 24px;
+            background: #eef5f0;
+            border-radius: 24px;
+            padding: 20px;
+        }
+        .summary-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e6b4c;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .summary-title.urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 20px;
+            direction: rtl;
+            margin-top: 10px;
+            margin-bottom: 16px;
+        }
+        .summary-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .summary-row {
+            background: white;
+            border-radius: 16px;
+            padding: 12px 16px;
+        }
+        .summary-row p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #2c3e2f;
+            margin-bottom: 6px;
+        }
+        .summary-row .urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 15px;
+            direction: rtl;
+            color: #5a3e1b;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #e8e0c8;
+        }
+        .note-box {
+            margin-top: 16px;
+            background: #fff3cd;
+            border-radius: 16px;
+            padding: 12px 16px;
+        }
+        .note-box p {
+            font-size: 12px;
+            color: #856404;
+            line-height: 1.5;
+        }
+        .note-box .urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 14px;
+            direction: rtl;
+            margin-top: 8px;
+        }
+        /* Button */
+        .btn-container {
+            padding: 0 24px 24px 24px;
+        }
+        .btn-back {
+            display: block;
+            background: linear-gradient(135deg, #c9a03d, #e8c468);
+            color: #1e3a2f;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background: linear-gradient(135deg, #b88d2a, #d4a83a);
+            transform: scale(1.02);
+        }
+        /* Footer */
+        .footer {
+            background: #1e3a2f;
+            padding: 12px;
+            text-align: center;
+            color: #e8c468;
+            font-size: 10px;
+        }
+        @media (max-width: 550px) {
+            .card-header h1 { font-size: 22px; }
+            .type-name-en { font-size: 16px; }
+            .intro-text { font-size: 13px; }
+            .intro-text.urdu { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="types-card">
+        <div class="card-header">
+            <h1>🕋 TYPES OF HAJJ | حج کی اقسام</h1>
+            <div class="arabic">أَنْوَاعُ الْحَجِّ</div>
+            <div class="sub">Three Types • تین اقسام • Tamattu' • Qiran • Ifrad</div>
+        </div>
+        
+        <!-- Introduction -->
+        <div class="intro-section">
+            <div class="intro-text">
+                There are three types of Hajj in Islam: <strong>Tamattu'</strong>, <strong>Qiran</strong>, and <strong>Ifrad</strong>. These differ primarily in whether Umrah is combined with Hajj, the timing of Ihram, and whether a sacrifice (Hady) is required.
+            </div>
+            <div class="intro-text urdu">
+                اسلام میں حج کی تین قسمیں ہیں: <strong>تمتع، قران، اور افراد</strong>۔ ان میں بنیادی فرق یہ ہے کہ آیا عمرہ حج کے ساتھ ملا کر کیا جائے، احرام کن اوقات میں باندھا/کھولا جائے، اور آیا قربانی مخصوص حج کے مناسک میں شامل ہے کہ نہیں ہے۔
+            </div>
+        </div>
+        
+        <!-- Three Types (Clickable) -->
+        <div class="types-grid">
+            
+            <!-- TYPE 1: TAMATTU' -->
+            <div class="type-item tamattu" onclick="toggleDetails(this)">
+                <div class="type-header">
+                    <div class="type-title">
+                        <span class="type-name-en">1. Hajj al-Tamattu' (Interrupted Hajj)</span>
+                        <span class="type-name-ar">حج التمتع</span>
+                        <span class="type-name-ur">حج تمتع (منقطع حج)</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="type-details">
+                    <div class="details-content">
+                        <div class="english-details">
+                            <p><span class="highlight">Definition:</span> The most common type, where a pilgrim performs Umrah during the Hajj months (Shawwal, Dhu'l-Qi'dah, Dhu'l-Hijjah), then exits the state of Ihram, and re-enters Ihram for Hajj on the 8th of Dhu'l-Hijjah.</p>
+                            <p><span class="highlight">Best for:</span> Pilgrims traveling from outside Saudi Arabia (foreigners).</p>
+                            <p><span class="highlight">Requirement:</span> A sacrifice (Hady) is mandatory.</p>
+                        </div>
+                        <div class="urdu-details">
+                            <p><span class="highlight">تعریف:</span> یہ حج کی سب سے عام قسم، جہاں ایک حاجی حج کے مہینوں: شوال، ذوالقعدة اور ذوالحجة، کے دوران عمرہ کرتا ہے اور پھر احرام کی حالت سے باہر نکلتا ہے، اور 8 ذی الحجہ کو دوبارہ حج کا احرام باندھتا ہے۔</p>
+                            <p><span class="highlight">کِن کے لیئے موزوں ہے:</span> سعودی عرب سے باہر سے سفر کرنے والے عازمین (غیر ملکی)۔</p>
+                            <p><span class="highlight">اہم و ضروری:</span> قربانی لازمی ہے۔</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TYPE 2: QIRAN -->
+            <div class="type-item qiran" onclick="toggleDetails(this)">
+                <div class="type-header">
+                    <div class="type-title">
+                        <span class="type-name-en">2. Hajj al-Qiran (Combined Hajj)</span>
+                        <span class="type-name-ar">حج القرآن</span>
+                        <span class="type-name-ur">حج قران (مشترکہ حج)</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="type-details">
+                    <div class="details-content">
+                        <div class="english-details">
+                            <p><span class="highlight">Definition:</span> The pilgrim combines Umrah and Hajj in one continuous journey, wearing one Ihram for both, or starting with Umrah and converting it to Hajj before completing it.</p>
+                            <p><span class="highlight">Best for:</span> Those who want to gain maximum rewards by performing both together.</p>
+                            <p><span class="highlight">Requirement:</span> A sacrifice (Hady) is mandatory.</p>
+                            <p><span class="highlight">Important Note:</span> Once the pilgrim puts on Ihram with the intention of Hajj al-Qiran, during the performance of Umrah the pilgrim will not perform Qasr (shaving the head) because after putting on Ihram he must abide by the prerequisites related to Ihram. However, on 10th Dhul-Hijjah after sacrifice (Qurbani) he will perform Qasr (shaving the head).</p>
+                        </div>
+                        <div class="urdu-details">
+                            <p><span class="highlight">تعریف:</span> حاجی دوران سفر عمرہ اور حج، دونوں کے لیے نیت کرکے ایک ہی دفعہ احرام باندھتا ہے اور عمرہ و مناسک حج کی تکمیل کے بعد احرام کھول دیتا ہے۔</p>
+                            <p><span class="highlight">کِن کے لیئے موزوں ہے:</span> وہ لوگ جو عمرہ اور حج دونوں اکٹھے کر کے زیادہ سے زیادہ ثواب حاصل کرنا چاہتے ہیں۔</p>
+                            <p><span class="highlight">اہم و ضروری:</span> قربانی واجب ہے۔</p>
+                            <p><span class="highlight">ضروری ہدایت:</span> کیونکہ احرام باندھنے کے بعد حاجی پر احرام سے منسلکہ بندشیں لاگو ہو جاتی ہیں اس لیے حاجی عمرہ کی ادائیگی پر قصر یعنی بال اتروانے کا عمل نہیں کرے گا۔ ہاں البتہ 10 ذو الحجة کو قربانی کے بعد قصر کرے گا۔</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TYPE 3: IFRAD -->
+            <div class="type-item ifrad" onclick="toggleDetails(this)">
+                <div class="type-header">
+                    <div class="type-title">
+                        <span class="type-name-en">3. Hajj al-Ifrad (Isolated Hajj)</span>
+                        <span class="type-name-ar">حج افراد</span>
+                        <span class="type-name-ur">حج افراد</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="type-details">
+                    <div class="details-content">
+                        <div class="english-details">
+                            <p><span class="highlight">Definition:</span> The pilgrim enters Ihram with the intention of performing only Hajj, without combining it with Umrah.</p>
+                            <p><span class="highlight">Best for:</span> Residents of Makkah and the Miqat boundaries.</p>
+                            <p><span class="highlight">Requirement:</span> No sacrifice (Hady) is required, but it is recommended.</p>
+                        </div>
+                        <div class="urdu-details">
+                            <p><span class="highlight">تعریف:</span> حاجی احرام اس نیت کے ساتھ باندھتا ہے کہ وہ صرف حج ادا کرے گا۔ عمرہ اس میں شامل نہیں ہوگا۔</p>
+                            <p><span class="highlight">کِن کے لیئے موزوں ہے:</span> اُن لوگوں کے لیے جو مکہ مکرمہ اور میقات کی حدود میں رہائش پذیر ہیں۔</p>
+                            <p><span class="highlight">اہم و ضروری:</span> قربانی کی ضرورت نہیں ہے، اگر چاہیں تو کر لیں، مستحب ہے۔</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SUMMARY SECTION -->
+        <div class="summary-section">
+            <div class="summary-title">📋 SUMMARY | خلاصہ</div>
+            
+            <div class="summary-grid">
+                <div class="summary-row">
+                    <p><strong>Ihram / احرام:</strong> Tamattu' uses two separate Ihrams; Qiran and Ifrad use one.</p>
+                    <div class="urdu">حج تمتع کے لیے احرام دو دفعہ (عمرہ اور حج کے لیے الگ الگ)؛ جبکہ حج قران اور حج افراد کے لیے ایک ہی دفعہ نیت کر کے احرام باندھا جاتا ہے۔</div>
+                </div>
+                <div class="summary-row">
+                    <p><strong>Sacrifice (Hady) / قربانی:</strong> Required for Tamattu' and Qiran; not for Ifrad.</p>
+                    <div class="urdu">حج تمتع اور حج قران کے لیے قربانی ضروری ہے لیکن حج افراد کے لیے قربانی کی کوئی پابندی نہیں۔</div>
+                </div>
+                <div class="summary-row">
+                    <p><strong>Umrah / عمرہ:</strong> Tamattu' involves a complete, separate Umrah; Qiran combines them; Ifrad has no Umrah.</p>
+                    <div class="urdu">حج تمتع میں عمرہ شامل ہے؛ حج قران میں عمرہ حج کے ساتھ ملایا جاتا ہے؛ حج افراد میں عمرہ شامل نہیں ہے۔</div>
+                </div>
+            </div>
+            
+            <div class="note-box">
+                <p>📌 <strong>Note for Hajj al-Qiran:</strong> Because the pilgrim is in a continuous state of Ihram, he does not perform Qasr (shaving the head) after Umrah. He will perform Qasr on the 10th of Dhul-Hijjah after the sacrifice.</p>
+                <div class="urdu">📌 <strong>حج قرآن کے لیے ضروری ہدایت:</strong> کیونکہ احرام باندھنے کے بعد حاجی پر احرام سے منسلکہ بندشیں لاگو ہو جاتی ہیں اس لیے حاجی عمرہ کی ادائیگی پر قصر یعنی بال اتروانے کا عمل نہیں کرے گا۔ ہاں البتہ 10 ذو الحجة کو قربانی کے بعد قصر کرے گا۔</div>
+            </div>
+        </div>
+        
+        <!-- BACK BUTTON -->
+        <div class="btn-container">
+            <a href="index.html" class="btn-back">⬅️ BACK TO MAIN HAJJ GUIDE | مرکزی حج گائیڈ پر واپس جائیں</a>
+        </div>
+        
+        <div class="footer">
+            🕋 Learn the three types of Hajj | حج کی تین اقسام سیکھیں | May Allah accept
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDetails(element) {
+        const details = element.querySelector('.type-details');
+        const icon = element.querySelector('.toggle-icon');
+        
+        if (details.classList.contains('open')) {
+            details.classList.remove('open');
+            icon.style.transform = 'rotate(0deg)';
+            icon.innerHTML = '▼';
+        } else {
+            details.classList.add('open');
+            icon.style.transform = 'rotate(180deg)';
+            icon.innerHTML = '▲';
+        }
+    }
+</script>
+</body>
+</html>
